@@ -616,195 +616,47 @@ Our network of vetted professionals offers essential services—from hospitality
 
 
 
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section about">
+            <h3>Talent Connect Canada Int</h3>
+            <ul><li>120 Matheson Blvd E #203</li><li>Mississauga, ON L4Z 3P8</li><li>Canada</li></ul>
+        </div>
+        <div class="footer-section links">
+            <h3>Quick Links</h3>
+            <ul>
+		<li><a href="Tchome.html">Home</a></li>
+                <li><a href="Tcabout.html">About Us</a></li>
+		<li><a href="Tctesti.html">Testimonials</a></li>
+            </ul>
+        </div>
+        <div class="footer-section contact">
+            <h3>Contact Us</h3>
+	    <p id="footer-email">Email: </p>
+	    <p id="footer-contact">Phone: </p>
+            
+        </div>
+        <div class="footer-section newsletter">
+            <h3>Newsletter</h3>
+            <p>Subscribe to receive updates and exclusive offers.</p>
+            <form id="newsletter-form">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 TALENT CONNECT CANADA INT</p>
+    </div>
+</footer>
+
 <script>
-
-    	const sheetId = '1acEApOhzCHftE46j2c-z4Nmk7q-FtBYD0DodEwCf8ZE';  
-    	const apiKey = 'AIzaSyBcHWzszpHiwau79gqQKz5IjX1LE5_bJc8';    
-    	const range = 'Sheet1!A:E';  // Adjusted to include column E (Application Status)
-    	const range_insurance = 'Sheet1!Q2:Q10'; // Fetch insurance amounts
-
-
+    const sheetId = '1acEApOhzCHftE46j2c-z4Nmk7q-FtBYD0DodEwCf8ZE';  
+    const apiKey = 'AIzaSyBcHWzszpHiwau79gqQKz5IjX1LE5_bJc8';    
+    const range = 'Sheet1!A:E';  // Adjusted to include column E (Application Status)
     const range_whatsappTell = 'Sheet1!N2';  // Fetch only cell N2
     const range_footerContact = 'Sheet1!O2';  // Fetch cell O2
-    const range_footerEmail = 'Sheet1!O3';  // Fetch cell O2
-
-
-        // Get elements
-        const openDialog = document.getElementById('openDialog');
-        const closeDialog = document.getElementById('closeDialog');
-        const dialogOverlay = document.getElementById('dialogOverlay');
-        const countrySelect = document.getElementById('countrySelect');
-        const message = document.getElementById('message');
-        const agreeCheckbox = document.getElementById('agreeCheckbox');
-        const checkboxContainer = document.getElementById('checkboxContainer');
-        const proceedButton = document.getElementById('proceedButton');
-	const range_applicationUrl = 'Sheet1!R2'; // Cell R2
-
-	let applicationUrl = ""; // This will store form URL from the sheet
-
-	let insuranceAmounts = {}; // Store fetched amounts
-
-    
-    function checkStatus() {
-        console.log("Button clicked! Function is running."); // Debugging
-
-        const email = document.getElementById('emailInput').value.trim();
-        const resultDiv = document.getElementById('result');
-
-        if (!email) {
-            resultDiv.innerHTML = '<span style="color:red;">Please enter an email.</span>';
-            return;
-        }
-
-        const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
-
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                console.log("Data fetched:", data); // Debugging
-
-                if (!data.values) {
-                    throw new Error("No data found.");
-                }
-
-                let userFound = false;
-
-                for (let row of data.values) {
-                    if (row.length >= 5 && row[1].toLowerCase() === email.toLowerCase()) {  
-                        resultDiv.innerHTML = `${row[4] || "No status available."}`;
-                        userFound = true;
-                        break;
-                    }
-                }
-
-                if (!userFound) {
-                    resultDiv.innerHTML = '<span style="color:red;">No application found for this email.</span>';
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                resultDiv.innerHTML = '<span style="color:red;">Error retrieving data. Try again later.</span>';
-            });
-    }
-
-function clearFields() {
-    document.getElementById('emailInput').value = ''; // Clear email input
-    document.getElementById('result').innerHTML = ''; // Clear result display
-}
-
-
-// Function to fetch the application URL from Google Sheets
-function fetchApplicationUrl() {
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range_applicationUrl}?key=${apiKey}`;
-
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            if (data.values && data.values.length > 0) {
-                applicationUrl = data.values[0][0]; // Store the URL from R2
-                console.log("Application URL Loaded:", applicationUrl);
-            } else {
-                console.error("No application URL found in Sheet.");
-            }
-        })
-        .catch(error => console.error("Error fetching application URL:", error));
-}
-
-
-// Function to fetch insurance amounts from Google Sheets
-function fetchInsuranceAmounts() {
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range_insurance}?key=${apiKey}`;
-
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            if (data.values && data.values.length > 0) {
-                // Store values dynamically
-                insuranceAmounts = {
-                    "Nigeria": data.values[0][0],     // Q2
-                    "Ghana": data.values[1][0],       // Q3
-                    "Cameroon": data.values[2][0],    // Q4
-                    "Uganda": data.values[3][0],      // Q5
-                    "Kenya": data.values[4][0],       // Q6
-                    "South Africa": data.values[5][0],// Q7
-                    "Tanzania": data.values[6][0],    // Q8
-                    "Rwanda": data.values[7][0],    // Q9
-		    "Others": data.values[8][0],    // Q10
-                };
-                console.log("Insurance Amounts Loaded:", insuranceAmounts);
-            }
-        })
-        .catch(error => console.error("Error fetching insurance amounts:", error));
-}
-
-
-        // Show dialog
-        openDialog.addEventListener('click', function() {
-            dialogOverlay.style.display = 'flex';
-        });
-
-        // Close dialog
-        closeDialog.addEventListener('click', function() {
-            dialogOverlay.style.display = 'none';
-            resetForm();
-        });
-
-         // Country selection logic
-	countrySelect.addEventListener('change', function() {
-    	const selectedCountry = countrySelect.value;
-    
-    if (selectedCountry) {
-        const insuranceMessage = insuranceAmounts[selectedCountry] 
-            ? `<b>Important:</b> If you are selected, <b>Visa & Ticket are sponsored</b>. After signing the <b>Job Offer Letter</b>, you will be required to pay <b>Insurance (${insuranceAmounts[selectedCountry]})</b>. Insurance is the only payment during this process.`
-            : `<b>Important:</b> Insurance amount not available. Please contact support.`;
-
-        message.innerHTML = insuranceMessage;
-        message.style.display = 'block'; // Show message
-        checkboxContainer.style.display = 'flex'; // Show checkbox
-    } else {
-        message.style.display = 'none'; // Hide message if no country selected
-        checkboxContainer.style.display = 'none'; // Hide checkbox
-    }
-
-    checkConditions(); // Check if conditions to enable button are met
-});
-
-       
-
-        // Checkbox logic
-        agreeCheckbox.addEventListener('change', function() {
-            checkConditions(); // Check if conditions to enable button are met
-        });
-
-        // Enable button only if both country is selected & checkbox is checked
-        function checkConditions() {
-            if (countrySelect.value && agreeCheckbox.checked) {
-                proceedButton.disabled = false;
-            } else {
-                proceedButton.disabled = true;
-            }
-        }
-
- // Proceed Button Click Event
-    proceedButton.addEventListener('click', function() {
-       if (!proceedButton.disabled && applicationUrl) {
-            window.open(applicationUrl, "_blank"); // Open the loaded URL
-        } else {
-            alert("Application URL is not available. Please try again later.");
-        }
-
-
-
-    });
-
-        // Reset form when closing dialog
-        function resetForm() {
-            countrySelect.value = "";
-            message.style.display = 'none';
-            checkboxContainer.style.display = 'none';
-            agreeCheckbox.checked = false;
-            proceedButton.disabled = true;
-        }
+    const range_footerEmail = 'Sheet1!O3';  // Fetch cell O3
 
 
 function updateWhatsAppButton() {
@@ -835,6 +687,7 @@ function updateFooterContact() {
                 const footerContact = data.values[0][0];  // Extract the contact from cell O2
                 if (footerContact) {
                     document.getElementById('footer-contact').innerHTML = `Phone: ${footerContact}`;
+		    document.getElementById('about-contact').innerHTML = `Phone: ${footerContact}`;
                 }
             }
         })
@@ -852,6 +705,7 @@ function updateFooterEmail() {
             if (data.values && data.values.length > 0) {
                 const footerEmail = data.values[0][0];  // Extract the contact from cell O2
                 if (footerEmail) {
+                    document.getElementById('about-email').innerHTML = `Email: ${footerEmail}`;
                     document.getElementById('footer-email').innerHTML = `Email: ${footerEmail}`;
                 }
             }
@@ -863,18 +717,18 @@ function updateFooterEmail() {
 
 // Call function when the page loads
 window.onload = function() {
-    fetchApplicationUrl();
-    fetchInsuranceAmounts();
     updateFooterContact();
     updateFooterEmail();
     updateWhatsAppButton(); // Ensure other functions also run
 };
+
 
 </script>
 
 <a id="whatsapp-button" href="#" class="whatsapp-button" target="_blank">
     <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
 </a>
+
 
 </body>
 </html>
