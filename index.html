@@ -812,19 +812,17 @@ function updateWhatsAppButton() {
 function updateFooterContact() {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range_footerContact}?key=${apiKey}`;
 
-    fetch(url)
+    fetch(url, { mode: 'no-cors' })
         .then(response => response.json())
         .then(data => {
             if (data.values && data.values.length > 0) {
-                const footerContact = data.values[0][0];  
+                const footerContact = data.values[0][0];
                 if (footerContact) {
                     document.getElementById('footer-contact').innerHTML = `Phone: ${footerContact}`;
                 }
             }
         })
-        .catch(error => {
-            console.error('Error fetching footer contact:', error);
-        });
+        .catch(error => console.error("Error fetching footer contact:", error));
 }
 
 function updateFooterEmail() {
