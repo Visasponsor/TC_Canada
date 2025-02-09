@@ -1,0 +1,630 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TC Testimonials</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+	    transition: background 0.3s ease-in-out;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: rgba(0, 0, 0, 0.8);
+            color: #ffffff;
+	    font-weight: bold;
+	    padding: 5px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            height: 60px;
+        }
+
+        .container1 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 100%;
+        }
+
+        .logo img {
+            width: 150px;
+            height: auto;
+        }
+	
+
+        .nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav ul li a {
+            color: #fff;
+	    font-weight: bold;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav ul li a:hover {            
+	    background-color: #ffd700;
+            color: #16213e;
+        }
+
+	.nav ul li a.active {
+	    background-color: #ffd700;
+            color: #16213e;
+	    font-weight: bold;
+	}
+
+
+
+	.footer {
+	    background: linear-gradient(135deg, #0f3460, #1a1a2e);
+	    color: white;
+	    padding: 40px 20px;
+	    position: relative;
+	}
+
+	.footer-container {
+	    display: flex;
+	    justify-content: space-between;
+	    flex-wrap: wrap;
+	}
+
+	.footer-section {
+	    flex: 1;
+	    padding: 20px;
+	}
+
+	.footer-section h3 {
+	    border-bottom: 2px solid #e74c3c;
+	    padding-bottom: 10px;
+	}
+
+	.footer-section ul {
+	    list-style: none;
+	    padding: 0;
+	}
+
+	.footer-section ul li {
+	    margin: 10px 0;
+	}
+
+	.footer-section ul li a {
+	    color: white;
+	    text-decoration: none;
+	    transition: color 0.3s;
+	}
+
+	.footer-section ul li a:hover {
+	    color: #e74c3c;
+	}
+
+	.socials a {
+	    color: white;
+	    margin-right: 15px;
+	    font-size: 16px;
+	    transition: color 0.3s;
+	}
+
+	.socials a:hover {
+	    color: #e74c3c;
+	}
+
+	.newsletter form {
+	    display: flex;
+	    flex-direction: column;
+	}
+
+	.newsletter input {
+	    padding: 10px;
+	    border: none;
+	    border-radius: 5px;
+	    margin-bottom: 10px;
+	}
+
+	.newsletter button {
+	    padding: 10px;
+	    background: #e74c3c;
+	    border: none;
+	    border-radius: 5px;
+	    color: white;
+	    cursor: pointer;
+	    transition: background 0.3s;
+	}
+
+	.newsletter button:hover {
+	    background: #c0392b;
+	}
+
+	.footer-bottom {
+	    text-align: center;
+	    margin-top: 20px;
+	}
+
+	.review-cards-container {
+  	    display: flex;
+  	    flex-direction: column;
+	    gap: 30px;
+	    padding: 20px;
+            margin-top: 30px;
+ 	}
+
+.review-card {
+	  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease-in-out;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+}
+
+.review-header {
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.review-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.review-date {
+  font-size: 14px;
+  color: #888;
+}
+
+.review-ratings p {
+  margin: 5px 0;
+  font-size: 15px;
+}
+
+.review-text p {
+  font-size: 16px;
+  color: #333;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+
+        /* Main styles for the review section */
+        .review-section {
+            background-color: #f8f9fa;
+            padding: 20px 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 30px auto;
+            width: 80%;
+
+            justify-content: center; /* Align products horizontally */
+            
+        }
+
+        .review-section h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .review-section p {
+            color: #555;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .trustpilot-logo img {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+
+
+
+	.middle{
+	    margin-top: 100px;
+	    padding-left: 20px;
+	}
+
+	.whatsapp-button {
+	    position: fixed;
+	    width: 60px;
+	    height: 60px;
+	    bottom: 20px;
+	    right: 20px;
+	    background-color: #25d366;
+	    border-radius: 50%;
+	    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    z-index: 1000;
+	}
+
+	.whatsapp-button:hover {
+	    background-color: #128c7e;
+	    transition: background-color 0.3s ease;
+	}
+
+	.whatsapp-icon {
+	    width: 35px;
+	    height: 35px;
+	}
+
+/* For smaller screens */
+        @media (max-width: 768px) {
+
+	.header {
+            width: 100%;
+	    padding: 8px 10px;
+        }
+
+	.container1 {
+	    max-width: 100%;
+	}
+    
+            
+	.logo img {
+            width: 90px;
+            height: auto;
+        }
+
+	.nav ul {
+            flex-direction: flex; /* Stack nav items vertically */
+            width: 100%; /* Take full width for nav items */
+            gap: 5px;
+        }
+
+          .nav ul li a {
+            font-size: 0.9em;
+            padding: 10px;
+	    margin-right: 15px;
+        }
+
+	.review-section p {
+            font-size: 20px;
+        }
+
+	
+
+	.footer-section h3 {
+	    font-size: 18px;
+	}
+
+}
+
+
+
+    </style>
+</head>
+<body>
+
+
+<header class="header">
+        <div class="container1">
+            <div class="logo">
+                <img src="lg.png" alt="logo1">
+            </div>
+
+
+            <nav class="nav">
+                <ul>
+                    <li><a href="Tchome.html" >Home</a></li>
+                    <li><a href="Tcabout.html">About Us</a></li>
+		    <li><a href="Tctesti.html" class="active">Testionials</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+<div class="middle">
+<h2 style="font-size: 36px; color: #00f5d4; margin-bottom: 20px; text-align: left;">Testimonials</h2>
+</div>
+
+<!-- Review Section -->
+    <div class="review-section">
+        <p><span style="color: #800020; font-weight: bold;"> 3,000 + Candidates Already</span></p>
+       
+    </div>
+
+<!-- Testimonials Section -->
+<div class="review-cards-container">
+  
+<div class="review-card">
+    <div class="review-header"><h3>Olojido Adebola</h3> From Nigeria</div>
+    <div class="review-ratings"><p>⭐⭐⭐⭐⭐</p></div>
+    
+    <div class="review-text">      
+    <p>
+I came to canada for a cleaner job, after been selected. I did not my visa and ticket were paid for. I have been able to resume school here and will be completing my course next year. Its all thanks to these guys, i still work while schooling.
+</p>
+    </div></div>
+
+
+<div class="review-card">
+    <div class="review-header"><h3>Peter Nkuba Njau </h3> From Tanzania</div>
+    <div class="review-ratings"><p>⭐⭐⭐⭐⭐</p></div>
+    
+    <div class="review-text">      
+    <p>
+I appreciate how Talent Connect Canada made my transition easy. I’m now a dishwasher here and enjoying the experience. i a well paid so i am able to save and take care of my family back home.
+</p>
+    </div></div>
+
+
+<div class="review-card">
+    <div class="review-header"><h3>Emeka Okafor Olaniyan</h3> From Nigeria</div>
+    <div class="review-ratings"><p>⭐⭐⭐⭐⭐</p></div>
+    <div class="review-text">
+        <p>
+            The entire process felt secure, from when i applied with Global Travel & Work till when i got here. They took care of everything, visa sponsorship and flight. Now, I’m happily working as a kitchen assistant!
+        </p>
+    </div>
+</div>
+
+<div class="review-card">
+    <div class="review-header"><h3>Linda Munjoma Maseko</h3> From South Africa</div>
+    <div class="review-ratings"><p>⭐⭐⭐⭐⭐</p></div>
+    <div class="review-text">
+        <p>
+            I got a job in Canada as a farm worker. My visa is out already and flight booked, will move next week Monday.
+        </p>
+    </div>
+</div>
+
+<div class="review-card">
+    <div class="review-header"><h3>Samuel Amuzu Ayeh</h3> From Ghana</div>
+    <div class="review-ratings"><p>⭐⭐⭐⭐</p></div>
+    <div class="review-text">
+        <p>
+            Amazing experience! I have been working as a security guard here in Canada for the past 6 months now and am so grateful for their support. I did not spend anything much to get here.
+        </p>
+    </div>
+</div>
+
+<div class="review-card">
+    <div class="review-header"><h3>Mbali Ndlovu Jingo</h3> From South Africa</div>
+    <div class="review-ratings"><p>⭐⭐⭐⭐⭐</p></div>
+    <div class="review-text">
+        <p>
+            First I’m so thankful to Global Travel & Work as They helped me secure a receptionist role with Talent Connect Canada, and my visa and flight were all covered. Forever grateful. 
+        </p>
+    </div>
+</div>
+
+<div class="review-card">
+    <div class="review-header"><h3>Fatima Buba Sodiq</h3> From Nigeria</div>
+    <div class="review-ratings"><p>⭐⭐⭐⭐</p></div>
+    <div class="review-text">
+        <p>
+            I’m happily working as a cleaner and planning my future here!
+        </p>
+    </div>
+</div>
+
+<div class="review-card">
+    <div class="review-header"><h3>James Ngala</h3> From Tanzania</div>
+    <div class="review-ratings"><p>⭐⭐⭐⭐⭐</p></div>
+    <div class="review-text">
+        <p>
+            Relocating to Canada felt like an impossible dream. This visa sponsorship made it become a reality! i'm security guard now in British columbia, canada.
+        </p>
+    </div>
+</div>
+
+<div class="review-card">
+    <div class="review-header"><h3>Esther Njuguna</h3> From Kenya</div>
+    <div class="review-ratings"><p>⭐⭐⭐⭐⭐</p></div>
+    <div class="review-text">
+        <p>
+            Thank you for everything.
+        </p>
+    </div>
+</div>
+
+<div class="review-card">
+    <div class="review-header"><h3>Patience Moyo Sibanda</h3> From South Africa</div>
+    <div class="review-ratings"><p>⭐⭐⭐⭐</p></div>
+    <div class="review-text">
+        <p>
+            Moved to Canada as a receptionist, stress-free, everthing took about 3 months. Visa was paid by the copany.
+        </p>
+    </div>
+</div>
+
+<div class="review-card">
+    <div class="review-header"><h3>Kwame Acheampong</h3> From Ghana</div>
+    <div class="review-ratings"><p>⭐⭐⭐⭐⭐</p></div>
+    <div class="review-text">
+        <p>
+            Despite having little to no money, My dream of working abroad came true, thanks to Global Travel & Work and Talent Connect Canada.
+        </p>
+    </div>
+</div>
+
+<div class="review-card">
+    <div class="review-header"><h3>Grace Mbah</h3> From Cameroon</div>
+    <div class="review-ratings"><p>⭐⭐⭐⭐⭐</p></div>
+    <div class="review-text">
+        <p>
+            Innitially it was not easy, but as time went on everything unvielled to be real. The whole process took 3-4 months. I am now in vancouver, from cameroon.
+        </p>
+    </div>
+</div>
+
+<div class="review-card">
+    <div class="review-header"><h3>Joseph Kunda</h3> From Tanzania</div>
+    <div class="review-ratings"><p>⭐⭐⭐⭐⭐</p></div>
+    <div class="review-text">
+        <p>
+            Perfect, i give a 5/5 stars.
+        </p>
+    </div>
+</div>
+
+<div class="review-card">
+    <div class="review-header"><h3>Abdul Afolabi</h3> From Nigeria</div>
+    <div class="review-ratings"><p>⭐⭐⭐⭐⭐</p></div>
+    <div class="review-text">
+        <p>
+            I’m now working as a kitchen assistant in Canada, i am from nigeria and came in this year. 5 stars
+        </p>
+    </div>
+</div>
+
+<div class="review-card">
+    <div class="review-header"><h3>Collins Ndong</h3> From Cameroon</div>
+    <div class="review-ratings"><p>⭐⭐⭐⭐⭐</p></div>
+    <div class="review-text">
+        <p>
+            Everything went as i was told via whatsapp. I already have my visa waiting for flight ticket.
+        </p>
+    </div>
+</div>
+
+
+
+<div class="review-card">
+    <div class="review-header"><h3>Jennifer Mensah</h3> From Ghana</div>
+    <div class="review-ratings"><p>⭐⭐⭐⭐</p></div>
+    <div class="review-text">
+        <p>
+            Talent Connect Canada was super helpful. They sponsored my visa, and now I work as a fruit picker in Canada. Highly recommend!
+        </p>
+    </div>
+</div>
+  
+</div>
+
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section about">
+            <h3>Talent Connect Canada Int</h3>
+            <ul><li>120 Matheson Blvd E #203</li><li>Mississauga, ON L4Z 3P8</li><li>Canada</li></ul>
+        </div>
+        <div class="footer-section links">
+            <h3>Quick Links</h3>
+            <ul>
+		<li><a href="Tchome.html">Home</a></li>
+                <li><a href="Tcabout.html">About Us</a></li>
+		<li><a href="Tctesti.html">Testimonials</a></li>
+            </ul>
+        </div>
+        <div class="footer-section contact">
+            <h3>Contact Us</h3>
+	    <p id="footer-email">Email: .... </p>
+	    <p id="footer-contact">Phone: .....</p>
+            
+        </div>
+        <div class="footer-section newsletter">
+            <h3>Newsletter</h3>
+            <p>Subscribe to receive updates and exclusive offers.</p>
+            <form id="newsletter-form">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 TALENT CONNECT CANADA INT</p>
+    </div>
+</footer>
+
+<script>
+    const sheetId = '1acEApOhzCHftE46j2c-z4Nmk7q-FtBYD0DodEwCf8ZE';  
+    const apiKey = 'AIzaSyBcHWzszpHiwau79gqQKz5IjX1LE5_bJc8';    
+    const range = 'Sheet1!A:E';  
+    const range_whatsappTell = 'Sheet1!N2';  
+    const range_footerContact = 'Sheet1!O2';  
+    const range_footerEmail = 'Sheet1!O3';  
+
+function updateWhatsAppButton() {
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range_whatsappTell}?key=${apiKey}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.values && data.values.length > 0) {
+                const whatsappNumber = data.values[0][0].replace(/\D/g, ''); 
+                if (whatsappNumber) {
+                    document.getElementById('whatsapp-button').href = `https://wa.me/${whatsappNumber}`;
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching WhatsApp number:', error);
+        });
+}
+
+function updateFooterContact() {
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range_footerContact}?key=${apiKey}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.values && data.values.length > 0) {
+                const footerContact = data.values[0][0];  
+                if (footerContact) {
+                    document.getElementById('footer-contact').innerHTML = `Phone: ${footerContact}`;
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching footer contact:', error);
+        });
+}
+
+function updateFooterEmail() {
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range_footerEmail}?key=${apiKey}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.values && data.values.length > 0) {
+                const footerEmail = data.values[0][0];  
+                if (footerEmail) {
+                    document.getElementById('footer-email').innerHTML = `Email: ${footerEmail}`;
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching footer email:', error);
+        });
+}
+
+window.onload = function() {
+    updateFooterContact();
+    updateFooterEmail();
+    updateWhatsAppButton(); 
+};
+
+
+
+</script>
+
+<a id="whatsapp-button" href="#" class="whatsapp-button" target="_blank">
+    <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
+</a>
+
+
+</body>
+</html>
