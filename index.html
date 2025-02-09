@@ -2,22 +2,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TC About Us</title>
+    <title>TC Home</title>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1a1a2e;
-            color: #00f5d4;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            color: #fff;
+            transition: background 0.3s ease-in-out;
             overflow-x: hidden;
         }
 
         .header {
             background: rgba(0, 0, 0, 0.8);
             color: #ffffff;
-	        font-weight: bold;
-	        padding: 5px 20px;
+	    font-weight: bold;
+	    padding: 5px 20px;
             position: fixed;
             width: 100%;
             top: 0;
@@ -40,6 +41,7 @@
             width: 150px;
             height: auto;
         }
+	
 
         .nav ul {
             list-style: none;
@@ -51,7 +53,7 @@
 
         .nav ul li a {
             color: #fff;
-	        font-weight: bold;
+	    font-weight: bold;
             text-decoration: none;
             font-size: 1.1em;
             padding: 10px 20px;
@@ -60,133 +62,243 @@
         }
 
         .nav ul li a:hover {            
-	        background-color: #ffd700;
+	    background-color: #ffd700;
             color: #16213e;
         }
 
-	    .nav ul li a.active {
-	        background-color: #ffd700;
+	.nav ul li a.active {
+	    background-color: #ffd700;
             color: #16213e;
-	        font-weight: bold;
-	    }
+	    font-weight: bold;
+	}
 
-        #about {
-            padding: 60px 20px;
-            background-color: #16213e;
+
+        .container {
+            display: flex;
+            justify-content: space-between; /* Align products horizontally */
+            gap: 15px;
+            padding: 20px;
+            margin-top: 30px;
         }
 
-        #about h2 {
-            font-size: 36px;
-            color: #00f5d4;
-            margin-bottom: 20px;
-            text-align: left;
+        .product {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            width: 400px;
+            background-color: white;
+	    color: black;
+            border-radius: 10px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            box-sizing: border-box;
         }
 
-        #about p {
-            font-size: 18px;
-            line-height: 1.6;
-            color: white;
-            margin-bottom: 40px;
+	.product h3 {
+	    text-align: center;
+	}
+
+	.product:hover {         
+	    transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(255, 255, 255, 0.5);
         }
 
-        #about ul li {
-            list-style: none;
-            color: #00f5d4;
-        }
 
-        #about strong {
-            color: #00f5d4;
-        }
-
-        img {
+        iframe {
             width: 100%;
-            height: auto;
-            border-radius: 8px;
+            height: 100%;
+            border: none;
         }
 
-        footer {
-            background: linear-gradient(135deg, #0f3460, #1a1a2e);
-            color: white;
-            padding: 40px 20px;
+        .display-section {
+            background-color: #e0e0e0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            font-size: 1.2em;
+            color: #333333;
+            height: 400px;
+	    max-width: 100%;
+	    margin: 125px 15px 60px;
+            border-radius: 10px;
+            position: relative; /* Positioning context for the image */
+            overflow: hidden; /* Ensures content stays inside */
+        }
+
+        .text-box {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            border-radius: 8px;
+            display: inline-block;
+            position: relative;
+            z-index: 2; /* Ensure text is above the image */
+        }
+
+/* Overlay background */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+/* Dialog box */
+        .dialog {
+            background: white;
+            width: 350px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
             position: relative;
         }
 
-        .footer-container {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-
-        .footer-section {
-            flex: 1;
-            padding: 20px;
-        }
-
-        .footer-section h3 {
-            border-bottom: 2px solid #e74c3c;
-            padding-bottom: 10px;
-        }
-
-        .footer-section ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-section ul li {
-            margin: 10px 0;
-        }
-
-        .footer-section ul li a {
+        /* Close button for dialog box */
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: red;
             color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-section ul li a:hover {
-            color: #e74c3c;
-        }
-
-        .socials a {
-            color: white;
-            margin-right: 15px;
-            font-size: 16px;
-            transition: color 0.3s;
-        }
-
-        .socials a:hover {
-            color: #e74c3c;
-        }
-
-        .newsletter form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .newsletter input {
-            padding: 10px;
             border: none;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-
-        .newsletter button {
-            padding: 10px;
-            background: #e74c3c;
-            border: none;
-            border-radius: 5px;
-            color: white;
+            border-radius: 10%;
+            width: 60px;
+            height: 30px;
+            font-size: 13px;
             cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .newsletter button:hover {
-            background: #c0392b;
-        }
-
-        .footer-bottom {
             text-align: center;
-            margin-top: 20px;
         }
+
+        .close-btn:hover {
+            background: darkred;
+        }
+
+        /* Dropdown (spinner) dialog*/
+        select {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        /* Message box in dialog*/
+        #message {
+            font-size: 16px;
+            color: #333;
+            margin: 10px 0;
+	    text-align: left; /* Left-aligned text */
+            display: none; /* Initially hidden */
+        }
+
+        /* Checkbox container in dialog box */
+        .checkbox-container {
+            display: flex;
+            align-items: center; /* Align items properly */
+    justify-content: flex-start; /* Align to the left */
+	    color: #333;
+            margin: 10px 0;
+            display: none; /* Initially hidden */
+        }
+
+        .checkbox-container input {
+width: 16px; /* Standard checkbox size */
+    height: 16px;
+            margin-right: 10px;
+        }
+
+        .proceed-button-class:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        button:hover:not(:disabled) {
+            background: #0056b3;
+        }
+
+	.footer {
+	    background: linear-gradient(135deg, #0f3460, #1a1a2e);
+	    color: white;
+	    padding: 40px 20px;
+	    position: relative;
+	}
+
+	.footer-container {	
+	    display: flex;
+	    justify-content: space-between;
+	    flex-wrap: wrap;
+	}
+
+	.footer-section {
+	    flex: 1;
+	    padding: 20px;
+	}
+
+	.footer-section h3 {
+	    border-bottom: 2px solid #e74c3c;
+	    padding-bottom: 10px;
+	}
+
+	.footer-section ul {
+	    list-style: none;
+	    padding: 0;
+	}
+
+	.footer-section ul li {
+	    margin: 10px 0;
+	}
+
+	.footer-section ul li a {
+	    color: white;
+	    text-decoration: none;
+ 	    transition: color 0.3s;
+	}
+
+	.footer-section ul li a:hover {
+	    color: #e74c3c;
+	}
+
+	.socials a {
+	    color: white;
+	    margin-right: 15px;
+	    font-size: 16px;
+	    transition: color 0.3s;
+	}
+
+	.socials a:hover {
+	    color: #e74c3c;
+	}
+
+	.newsletter form {
+	    display: flex;
+	    flex-direction: column;
+	}
+
+	.newsletter input {
+	    padding: 10px;
+	    border: none;
+	    border-radius: 5px;
+	    margin-bottom: 10px;
+	}
+
+	.newsletter button {
+	    padding: 10px;
+	    background: #e74c3c;
+	    border: none;
+	    border-radius: 5px;
+	    color: white;
+	    cursor: pointer;
+	    transition: background 0.3s;
+	}
+
+	.newsletter button:hover {
+	    background: #c0392b;
+	}
 
 	.whatsapp-button {
 	    position: fixed;
@@ -213,7 +325,110 @@
 	    height: 35px;
 	}
 
-/* For smaller screens */
+	.apply-now-container {
+	    text-align: center;
+	    margin-top: 20px;
+	}
+
+	.apply-now-button {
+	    display: inline-block;
+	    background-color: #ffd700;
+	    color: #16213e;
+	    font-weight: bold;
+	    text-decoration: none;
+	    font-size: 1.2em;
+	    width: 80%;
+	    max-width: 500px;
+	    margin: 20px auto; /* Centers the container horizontally */
+	    text-align: center; /* Centers text content */
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center; /* Ensures all elements inside are centered */
+	    padding: 15px 30px;
+	    border-radius: 30px;
+	    transition: background-color 0.3s ease;
+	}
+
+	.apply-now-button:hover {
+	    background-color: #e0b400;
+	    color: white;
+	}
+
+	.clear-btn {
+	    position: absolute;
+            top: 10px;
+            right: 10px;
+            background: red;
+            color: white;
+            border: none;
+            border-radius: 10%;
+            width: 60px;
+            height: 30px;
+            font-size: 13px;
+            cursor: pointer;
+            text-align: center;
+	}
+
+	.clear-btn:hover {
+	    background: darkred;
+	}
+
+	.container001 {
+	    background: white;
+	    padding: 20px;
+	    border-radius: 10px;
+	    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+	    width: 80%;
+	    max-width: 500px;
+	    margin: 20px auto; /* Centers the container horizontally */
+	    text-align: center; /* Centers text content */
+	    display: flex;
+	    flex-direction: column;
+	    position: relative; /* Allows absolute positioning of child elements */
+	}
+        .container001 h1 {
+            text-align: center;
+	    font-size: 1.2em;
+            color: #333;
+        }
+        
+	.container001 label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        
+	input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+	    box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+            border: none;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+	#result {
+      	    margin-top: 10px;
+	    width: 70%;
+	    text-align: left;
+	    line-height: 1.8;
+    	}
+
+	.footer-bottom {
+	    text-align: center;
+	    margin-top: 20px;
+	}
+        /* For smaller screens */
         @media (max-width: 768px) {
 
 	.header {
@@ -232,90 +447,117 @@
         }
 
 	.nav ul {
-            flex-direction: flex; /* Stack nav items vertically */
-            width: 100%; /* Take full width for nav items */
+            flex-direction: row; 
+            width: 100%; 
             gap: 5px;
         }
 
-          .nav ul li a {
+        .nav ul li a {
             font-size: 0.9em;
             padding: 10px;
 	    margin-right: 15px;
         }
 
-	
-	.footer-section h3 {
-	
-	    font-size: 18px;
-	}
-
-	#about {
-            font-size: 16px;
-	    margin-top: 10px;
+	.text-box {
+            padding: 10px;
+	    width: 80%;
         }
 
+	.container {
+	    max-width: 100%;
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items if desired */
+        }
+
+	.product {
+            width: 100%;
+        }
+
+	.footer-section h3 {
+	    font-size: 18px;
+	}
 }
-
-
 
 
     </style>
 </head>
 <body>
 
-<header class="header">
-    <div class="container1">
-        <div class="logo">
+
+ <header class="header">
+        <div class="container1">
+            <div class="logo">
                 <img src="lg.png" alt="logo1">
             </div>
+
             <nav class="nav">
                 <ul>
-                    <li><a href="Tchome.html">Home</a></li>
-                    <li><a href="Tcabout.html" class="active">About Us</a></li>
-		    <li><a href="Tctesti.html">Testionials</a></li>
+                    <li><a href="Tchome.html" class="active">Home</a></li>
+                    <li><a href="Tcabout.html">About Us</a></li>
+		    <li><a href="Tctesti.html">Testimonials</a></li>
                 </ul>
-        </nav>
+            </nav>
+        </div>
+    </header>
+
+    <div class="display-section" style="background-image: url('yep.png'); background-size: cover; background-position: center;">
+       
     </div>
-</header>
 
-<section id="about">
-    <div style="max-width: 1200px; margin: 0 auto;">
-        <h2>About Us</h2>
-
-<p>Established in February 2021, <strong>Talent Connect Canada</strong> is a legally registered workforce placement company dedicated to providing skilled and unskilled workers to Canadian companies and households. Over the years, we have successfully placed more than <strong>3,000 candidates</strong> in various industries, with the majority candidates coming from countries like <strong>Nigeria, Ghana, Cameroon, Kenya, South Africa, Rwanda, Uganda,</strong> and more...
-
-<br><br>We specialize in bridging the gap between <b>Canadian employers (Partner companies)</b> and <b>international talent</b> through a <b>transparent and efficient employment process</b>. Our <b>visa sponsorship program</b> ensures that selected candidates are legally placed in jobs, with <strong>all work visa and travel expenses covered by us</strong>. However, to comply with immigration regulations, <strong>every candidate pays for their insurance before we start their visa process</strong>.
-
-<br><br>Unlike other agencies, we operate on a <strong>no hidden fee</strong> policy. Apart from insurance, we cover all other expenses, including visa processing, flight tickets, and placement. In return, <strong>20% of the worker’s salary is deducted over a period of ONE YEAR</strong> to cover up for the expenses incured, while they receive the rest <strong>80% as salary</strong>.
-<br><br><strong>Why Choose Talent Connect Canada?</strong><br>
-✅ <b>100% Visa Sponsorship</b> – No upfront costs except insurance<br>
-✅ <b>Guaranteed Job Placement</b> – Secure employment before arrival in Canada<br>
-✅ <b>Competitive Salaries</b> – Paid in accordance with Canadian labor laws<br>
-✅ <b>Guaranteed Permanent Residency</b> – Support for long-term settlement<br>
-✅ <b>Trusted & Transparent Process</b> – No hidden fees, no false promises<br><br>
-
-We provide workforce solutions for industries such as <strong>hospitality, agriculture, construction, warehousing, security, and childcare,</strong> ensuring that both businesses and workers benefit from reliable and well-structured employment opportunities.
-
-<br><br> <strong>📍 Location: 120 Matheson Blvd E #203, Mississauga, ON L4Z 3P8, Canada</strong><br>
-         <strong>📞 <b id="about-contact">Phone: </b></strong><br>
-         <strong>📩 <b id="about-email">Email: </b></strong><br>
+<div class="container">
+    <!-- Product 1 -->
+    <div class="product">
+<h3>Connecting Talent with Opportunity</h3>
+Bridging the gap between businesses and skilled workers across Canada. Reliable, dedicated, and ready to help you succeed.
     </div>
-</section>
+
+
+<!-- Product 2 -->
+<div class="product">
+<h3>Visa & Ticket Sponsorships Available</h3>
+We offer Visa sponsorship to selected candidates, However all candidates are required to pay insurance by themselves. Insurance is the only payment during this process. We bring global talent to Canada.
+    </div>
+
+<!-- Product 3 -->
+<div class="product">
+<h3>Trusted Workforce Solutions</h3>
+Our network of vetted professionals offers essential services—from hospitality to industrial roles—ensuring you get the support you need.
+</div>
+
+</div>
+
+<button class="apply-now-button" id="openDialog">Apply for Sponsored Visa Job</button>
+
+	<div class="container001">
+	<button type="button" class="clear-btn" onclick="clearFields()">Clear</button><br><br>
+    <form>
+        <h1>Check Application Progress</h1>
+        <input type="text" id="emailInput" class="input-field" placeholder="Enter your Email">
+        <button type="button" onclick="checkStatus()">Check Progress</button>
+
+    </form>
+
+    <div id="result" style="color: black;"></div>
+</div>
 
 <footer class="footer">
     <div class="footer-container">
         <div class="footer-section about">
             <h3>Talent Connect Canada Int</h3>
-            <ul><li>120 Matheson Blvd E #203</li><li>Mississauga, ON L4Z 3P8</li><li>Canada</li></ul>
+            <ul>
+		<li>120 Matheson Blvd E #203</li>
+	        <li>Mississauga, ON L4Z 3P8</li>
+		<li>Canada</li>
+	   </ul>
         </div>
         <div class="footer-section links">
-            <h3>Quick Links</h3>
-            <ul>
-		<li><a href="Tchome.html">Home</a></li>
-                <li><a href="Tcabout.html">About Us</a></li>
-		<li><a href="Tctesti.html">Testimonials</a></li>
-            </ul>
-        </div>
+    <h3>Quick Links</h3>
+    <ul>
+        <li><a href="Tchome.html">Home</a></li>
+        <li><a href="Tcabout.html">About Us</a></li>
+        <li><a href="Tctesti.html">Testimonials</a></li>
+    </ul>
+</div>
         <div class="footer-section contact">
             <h3>Contact Us</h3>
 	    <p id="footer-email">Email: </p>
@@ -336,13 +578,218 @@ We provide workforce solutions for industries such as <strong>hospitality, agric
     </div>
 </footer>
 
+<!-- Overlay for the dialog -->
+    <div class="overlay" id="dialogOverlay">
+        <div class="dialog">
+            
+	    <!-- Close Button (Top Right) -->
+            <button class="close-btn" id="closeDialog">Close</button><br>
+	    
+	    <h4 style="color: black;">Apply for Sponsored Visa Job</h4>
+
+            <!-- Spinner (Dropdown) -->
+            <select id="countrySelect">
+                <option value="" disabled selected>Select current country</option>
+                <option value="Nigeria">Nigeria</option>
+                <option value="Ghana">Ghana</option>
+                <option value="Cameroon">Cameroon</option>
+                <option value="Uganda">Uganda</option>
+                <option value="Kenya">Kenya</option>
+                <option value="South Africa">South Africa</option>
+                <option value="Tanzania">Tanzania</option>
+		<option value="Rwanda">Rwanda</option>
+                <option value="Others">Others</option>
+            </select>
+
+         
+            <p id="message"></p>
+
+            <div class="checkbox-container" id="checkboxContainer">
+                <input type="checkbox" id="agreeCheckbox">
+                <label for="agreeCheckbox">I Agree</label>
+            </div>
+
+            <button class="proceed-button-class" id="proceedButton" disabled>Proceed To Apply</button>
+        </div>
+    </div>
+
+
 <script>
-    const sheetId = '1acEApOhzCHftE46j2c-z4Nmk7q-FtBYD0DodEwCf8ZE';  
-    const apiKey = 'AIzaSyBcHWzszpHiwau79gqQKz5IjX1LE5_bJc8';    
-    const range = 'Sheet1!A:E';  // Adjusted to include column E (Application Status)
-    const range_whatsappTell = 'Sheet1!N2';  // Fetch only cell N2
-    const range_footerContact = 'Sheet1!O2';  // Fetch cell O2
-    const range_footerEmail = 'Sheet1!O3';  // Fetch cell O3
+
+    	const sheetId = '1acEApOhzCHftE46j2c-z4Nmk7q-FtBYD0DodEwCf8ZE';  
+    	const apiKey = 'AIzaSyBcHWzszpHiwau79gqQKz5IjX1LE5_bJc8';    
+    	const range = 'Sheet1!A:E';  
+    	const range_insurance = 'Sheet1!Q2:Q10'; 
+
+    const range_whatsappTell = 'Sheet1!N2';  
+    const range_footerContact = 'Sheet1!O2';  
+    const range_footerEmail = 'Sheet1!O3';  
+
+
+       
+        const openDialog = document.getElementById('openDialog');
+        const closeDialog = document.getElementById('closeDialog');
+        const dialogOverlay = document.getElementById('dialogOverlay');
+        const countrySelect = document.getElementById('countrySelect');
+        const message = document.getElementById('message');
+        const agreeCheckbox = document.getElementById('agreeCheckbox');
+        const checkboxContainer = document.getElementById('checkboxContainer');
+        const proceedButton = document.getElementById('proceedButton');
+	const range_applicationUrl = 'Sheet1!R2'; 
+
+	let applicationUrl = ""; 
+
+	let insuranceAmounts = {}; 
+    
+    function checkStatus() {
+        console.log("Button clicked! Function is running."); 
+
+        const email = document.getElementById('emailInput').value.trim();
+        const resultDiv = document.getElementById('result');
+
+        if (!email) {
+            resultDiv.innerHTML = '<span style="color:red;">Please enter an email.</span>';
+            return;
+        }
+
+        const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                console.log("Data fetched:", data); 
+
+                if (!data.values) {
+                    throw new Error("No data found.");
+                }
+
+                let userFound = false;
+
+                for (let row of data.values) {
+                    if (row.length >= 5 && row[1].toLowerCase() === email.toLowerCase()) {  
+                        resultDiv.innerHTML = `${row[4] || "No status available."}`;
+                        userFound = true;
+                        break;
+                    }
+                }
+
+                if (!userFound) {
+                    resultDiv.innerHTML = '<span style="color:red;">No application found for this email.</span>';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                resultDiv.innerHTML = '<span style="color:red;">Error retrieving data. Try again later.</span>';
+            });
+    }
+
+function clearFields() {
+    document.getElementById('emailInput').value = ''; 
+    document.getElementById('result').innerHTML = ''; 
+}
+
+
+function fetchApplicationUrl() {
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range_applicationUrl}?key=${apiKey}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.values && data.values.length > 0) {
+                applicationUrl = data.values[0][0]; 
+                console.log("Application URL Loaded:", applicationUrl);
+            } else {
+                console.error("No application URL found in Sheet.");
+            }
+        })
+        .catch(error => console.error("Error fetching application URL:", error));
+}
+
+
+function fetchInsuranceAmounts() {
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range_insurance}?key=${apiKey}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.values && data.values.length > 0) {
+                insuranceAmounts = {
+                    "Nigeria": data.values[0][0],     
+                    "Ghana": data.values[1][0],       
+                    "Cameroon": data.values[2][0],    
+                    "Uganda": data.values[3][0],      
+                    "Kenya": data.values[4][0],       
+                    "South Africa": data.values[5][0],
+                    "Tanzania": data.values[6][0],  
+                    "Rwanda": data.values[7][0],
+		    "Others": data.values[8][0]
+                };
+                console.log("Insurance Amounts Loaded:", insuranceAmounts);
+            }
+        })
+        .catch(error => console.error("Error fetching insurance amounts:", error));
+}
+
+
+        openDialog.addEventListener('click', function() {
+            dialogOverlay.style.display = 'flex';
+        });
+
+        closeDialog.addEventListener('click', function() {
+            dialogOverlay.style.display = 'none';
+            resetForm();
+        });
+
+	countrySelect.addEventListener('change', function() {
+    	const selectedCountry = countrySelect.value;
+    
+    if (selectedCountry) {
+        const insuranceMessage = insuranceAmounts[selectedCountry] 
+            ? `<b>Important:</b> If you are selected, <b>Visa & Ticket are sponsored</b>. After signing the <b>Job Offer Letter</b>, you will be required to pay <b>Insurance (${insuranceAmounts[selectedCountry]})</b>. Insurance is the only payment during this process.`
+            : `<b>Important:</b> Insurance amount not available. Please contact support.`;
+
+        message.innerHTML = insuranceMessage;
+        message.style.display = 'block'; 
+        checkboxContainer.style.display = 'flex'; 
+    } else {
+        message.style.display = 'none'; 
+        checkboxContainer.style.display = 'none'; 
+    }
+
+    checkConditions(); 
+});
+
+       
+        agreeCheckbox.addEventListener('change', function() {
+            checkConditions(); 
+        });
+
+        function checkConditions() {
+            if (countrySelect.value && agreeCheckbox.checked) {
+                proceedButton.disabled = false;
+            } else {
+                proceedButton.disabled = true;
+            }
+        }
+
+    proceedButton.addEventListener('click', function() {
+       if (!proceedButton.disabled && applicationUrl) {
+            window.open(applicationUrl, "_blank"); 
+        } else {
+            alert("Application URL is not available. Please try again later.");
+        }
+
+
+
+    });
+
+        function resetForm() {
+            countrySelect.value = "";
+            message.style.display = 'none';
+            checkboxContainer.style.display = 'none';
+            agreeCheckbox.checked = false;
+            proceedButton.disabled = true;
+        }
 
 
 function updateWhatsAppButton() {
@@ -352,7 +799,7 @@ function updateWhatsAppButton() {
         .then(response => response.json())
         .then(data => {
             if (data.values && data.values.length > 0) {
-                const whatsappNumber = data.values[0][0].replace(/\D/g, ''); // Remove non-numeric characters
+                const whatsappNumber = data.values[0][0].replace(/\D/g, ''); 
                 if (whatsappNumber) {
                     document.getElementById('whatsapp-button').href = `https://wa.me/${whatsappNumber}`;
                 }
@@ -370,10 +817,9 @@ function updateFooterContact() {
         .then(response => response.json())
         .then(data => {
             if (data.values && data.values.length > 0) {
-                const footerContact = data.values[0][0];  // Extract the contact from cell O2
+                const footerContact = data.values[0][0];  
                 if (footerContact) {
                     document.getElementById('footer-contact').innerHTML = `Phone: ${footerContact}`;
-		    document.getElementById('about-contact').innerHTML = `Phone: ${footerContact}`;
                 }
             }
         })
@@ -389,9 +835,8 @@ function updateFooterEmail() {
         .then(response => response.json())
         .then(data => {
             if (data.values && data.values.length > 0) {
-                const footerEmail = data.values[0][0];  // Extract the contact from cell O2
+                const footerEmail = data.values[0][0];  
                 if (footerEmail) {
-                    document.getElementById('about-email').innerHTML = `Email: ${footerEmail}`;
                     document.getElementById('footer-email').innerHTML = `Email: ${footerEmail}`;
                 }
             }
@@ -401,14 +846,13 @@ function updateFooterEmail() {
         });
 }
 
-// Call function when the page loads
 window.onload = function() {
+    fetchApplicationUrl();
+    fetchInsuranceAmounts();
     updateFooterContact();
     updateFooterEmail();
-    updateWhatsAppButton(); // Ensure other functions also run
-};
-
-
+    updateWhatsAppButton(); 
+}; 
 
 </script>
 
