@@ -810,9 +810,9 @@ function updateWhatsAppButton() {
 
 
 function updateFooterContact() {
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range_footerContact}?key=${apiKey}`;
+    const url = `https://script.google.com/macros/s/AKfycbzPqKLyKQ-F6BOK79SDfDZVI46mzBZyFxjVHAwCOHku3t4ltoXyguxkGq60OThw7aUowQ/exec`;
 
-    fetch(url, { mode: 'no-cors' })
+    fetch(url)
         .then(response => response.json())
         .then(data => {
             if (data.values && data.values.length > 0) {
