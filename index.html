@@ -2,7 +2,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TC Home</title>
+    <title>TC Canada | Home</title>
+    <link rel="icon" type="image/x-icon" href="favic.png">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -135,12 +136,65 @@
             z-index: 2; /* Ensure text is above the image */
         }
 
+        .faq {
+            padding-left: 20px; /* Adjusted for responsiveness */
+            padding-right: 20px; /* Adjusted for responsiveness */
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: #F4F4F4;
+            text-align: center;
+	    margin: 0px;
+        }
+
+        table {
+	
+            width: 100%;
+            padding: 20px; /* Adjusted for responsiveness */
+            margin-bottom: 40px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #9A9A9A;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .question {
+            cursor: pointer;
+        }
+
+        .answer {
+            display: none;
+	    color: black;
+        }
+
+        .plus-minus::before {
+            content: '+';
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .minus::before {
+            content: '-';
+        }
+
+        .active {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 23px;
+        }
+
+
 /* Overlay background */
         .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
+	    z-index: 9999;
             height: 100%;
             background: rgba(0, 0, 0, 0.5);
             display: none;
@@ -151,12 +205,15 @@
 /* Dialog box */
         .dialog {
             background: white;
-            width: 350px;
+            width: 80%;
+	    max-width: 600px;
+	    max-height: 80vh;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
             position: relative;
+overflow-y: auto;   /* Enables vertical scrolling */
         }
 
         /* Close button for dialog box */
@@ -179,6 +236,25 @@
             background: darkred;
         }
 
+	.clear-btn-dialog {
+            position: absolute;
+            top: 10px;
+            right: 80px;
+            background: red;
+            color: white;
+            border: none;
+            border-radius: 10%;
+            width: 60px;
+            height: 30px;
+            font-size: 13px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .clear-btn-dialog:hover {
+            background: darkred;
+        }
+
         /* Dropdown (spinner) dialog*/
         select {
             width: 100%;
@@ -195,15 +271,38 @@
 	    text-align: left; /* Left-aligned text */
             display: none; /* Initially hidden */
         }
+/* Make the message container scrollable */
+#message-container {
+    max-height: 200px;  /* Adjust this value as needed */
+    overflow-y: auto;   /* Enables vertical scrolling */
+    padding: 10px;
+    margin-top: 15px;
+    border: 1px solid #ccc;
+}
+
+
+	#important1 {
+            font-size: 16px;
+            color: #333;
+            margin: 10px 0;
+	    text-align: left; /* Left-aligned text */
+        }
+	#important2 {
+            font-size: 16px;
+            color: #333;
+            margin: 10px 0;
+	    text-align: left; /* Left-aligned text */
+	    display: none;
+        }
 
         /* Checkbox container in dialog box */
         .checkbox-container {
             display: flex;
-            align-items: center; /* Align items properly */
-    justify-content: flex-start; /* Align to the left */
-	    color: #333;
+    align-items: center;
+    justify-content: flex-start;
+        color: #333;
             margin: 10px 0;
-            display: none; /* Initially hidden */
+	    display: none;
         }
 
         .checkbox-container input {
@@ -354,6 +453,30 @@ width: 16px; /* Standard checkbox size */
 	    color: white;
 	}
 
+	.apply-now-button-urgent:hover {
+	    background-color: #e0b400;
+	    color: white;
+	}
+
+	.apply-now-button-urgent {
+	    display: inline-block;
+	    background-color: #ffd700;
+	    color: #16213e;
+	    font-weight: bold;
+	    text-decoration: none;
+	    font-size: 1.2em;
+	    width: 80%;
+	    max-width: 500px;
+	    margin: 20px auto; /* Centers the container horizontally */
+	    text-align: center; /* Centers text content */
+	    display: flex;
+	    flex-direction: column;
+	    align-items: center; /* Ensures all elements inside are centered */
+	    padding: 15px 30px;
+	    border-radius: 30px;
+	    transition: background-color 0.3s ease;
+	}
+
 	.clear-btn {
 	    position: absolute;
             top: 10px;
@@ -472,6 +595,24 @@ width: 16px; /* Standard checkbox size */
 	.product {
             width: 100%;
         }
+        .faq {
+            padding-left: 20px; /* Adjusted for responsiveness */
+            padding-right: 20px; /* Adjusted for responsiveness */
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: #F4F4F4;
+            text-align: center;
+	    margin-top: 20px;
+            max-width: 100%
+        }
+
+        table {
+            max-width: 100%;
+            padding: 20px; /* Adjusted for responsiveness */
+            margin-bottom: 40px;
+            border-collapse: collapse;
+        }
+
 
 	.footer-section h3 {
 	    font-size: 18px;
@@ -526,7 +667,7 @@ Our network of vetted professionals offers essential services—from hospitality
 
 </div>
 
-<button class="apply-now-button" id="openDialog">Apply for Sponsored Visa Job</button>
+<button class="apply-now-button" id="openDialog">Sponsored Visa Jobs</button>
 
 	<div class="container001">
 	<button type="button" class="clear-btn" onclick="clearFields()">Clear</button><br><br>
@@ -538,6 +679,120 @@ Our network of vetted professionals offers essential services—from hospitality
     </form>
 
     <div id="result" style="color: black;"></div>
+</div>
+
+
+
+<div class="faq">
+<h3 style="color: black;">FAQ - Frequently Asked Questions</h3>
+<table>
+    <tbody>
+        <tr>
+            <td class="question" onclick="toggleAnswer(this)" style="color: red;">
+                <span class="plus-minus"></span>
+                <b>Will I need to pay any fees during the process?</b>
+            </td>
+        </tr>
+        <tr class="answer">
+            <td>
+                <b>NO!</b> If you have an English Proficiency Certificate such as <b>IELTS</b> or <b>Duolingo</b>, you will not need to make any payments—we cover all expenses. However, if you do not have a recognized English Proficiency Certificate, you will be required to pay for one (no written exam), to be able to join our team.<br>
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="question" onclick="toggleAnswer(this)" style="color: red;">
+                <span class="plus-minus"></span>
+                <b>How does the process work?</b>
+            </td>
+        </tr>
+        <tr class="answer">
+            <td>
+                All expenses related to your flight and visa sponsorship are covered. The only potential cost is for an English Proficiency Certificate if you do not already have one.<br><br>
+                <b>Step-by-Step Process:</b><br>
+                1️⃣ <b>Application:</b> Complete and submit the <b>Recruitment Form</b> under <b>Sponsored Visa Jobs</b>.<br>
+                2️⃣ <b>English Proficiency:</b> Send your English Proficiency Certificate to <b style="color: blue;">ttc.recruit.ca@gmail.com</b>. If you do not have one, you must pay for an English Proficiency Certificate (EPC) to proceed. No written exam is required.<br>  
+                3️⃣ <b>Job Offer & Contract:</b> Once your details and English proficiency are verified, we will send you a job offer letter for signature before proceeding with your visa application.<br>
+                4️⃣ <b>Visa Sponsorship:</b> Your visa and flight ticket will be fully covered. 🤝<br>
+                5️⃣ <b>Travel & Expenses:</b> All travel-related costs, including flights, are covered.<br>  
+                6️⃣ <b>Arrival:</b> Upon arrival, you will be received at the airport and transported to your accommodation.<br>
+                7️⃣ <b>Accommodation:</b> You will receive free accommodation for one year. 🤝<br>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="question" onclick="toggleAnswer(this)" style="color: red;">
+                <span class="plus-minus"></span>
+                <b>How reliable is this process?</b>
+            </td>
+        </tr>
+        <tr class="answer">
+            <td>
+                <b>100% guaranteed!</b> If you meet the English Proficiency Certificate (EPC) requirement, we will successfully process your visa. For reviews you can check under the Testimonials Tab or check our <b><a href="https://www.tiktok.com/@canada_sponsors?_t=ZM-8u1DMW8m7nC&_r=1">Tiktok</a></b> <br>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="question" onclick="toggleAnswer(this)" style="color: red;">
+                <span class="plus-minus"></span>
+                <b>Can I get the job without an English Proficiency Certificate (EPC)?</b>
+            </td>
+        </tr>
+        <tr class="answer">
+            <td>
+                <b>NO!</b> Without an EPC, your application will be automatically declined. If you do not have <b>IELTS</b> or <b>Duolingo</b>, you must pay for an English Proficiency Certificate (EPC). If you fail to provide any of these, you are not eligible to proceed.<br>
+            </td>
+        </tr>
+	
+        <tr>
+            <td class="question" onclick="toggleAnswer(this)" style="color: red;">
+                <span class="plus-minus"></span>
+                <b>Are there any additional fees besides the English Proficiency Certificate (EPC)?</b>
+            </td>
+        </tr>
+        <tr class="answer">
+            <td>
+                <b>NO!</b> There are no additional payments required at any stage of the process.<br>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="question" onclick="toggleAnswer(this)" style="color: red;">
+                <span class="plus-minus"></span>
+                <b>How long does the entire process take?</b>
+            </td>
+        </tr>
+        <tr class="answer">
+            <td>
+                Once your info is submitted and English Proficiency Certificate sent, the visa processing typically takes <b>3 Months</b>.<br>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="question" onclick="toggleAnswer(this)" style="color: red;">
+                <span class="plus-minus"></span>
+                <b>Will I receive any assistance upon arrival?</b>
+            </td>
+        </tr>
+        <tr class="answer">
+            <td>
+                <b>Yes!</b> Upon arrival, you will be picked up from the airport and provided with <b>One year free accommodation</b>. We also assist with orientation and settling into your new environment.<br>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="question" onclick="toggleAnswer(this)" style="color: red;">
+                <span class="plus-minus"></span>
+                <b>Can I travel with my family?</b>
+            </td>
+        </tr>
+        <tr class="answer">
+            <td>
+                <b>Yes!</b> But Not more than 4 persons (Including yourself).<br>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
 </div>
 
 <footer class="footer">
@@ -583,9 +838,64 @@ Our network of vetted professionals offers essential services—from hospitality
         <div class="dialog">
             
 	    <!-- Close Button (Top Right) -->
-            <button class="close-btn" id="closeDialog">Close</button><br>
+            <button class="clear-btn-dialog" id="clearDialog">Clear</button>
+	    <button class="close-btn" id="closeDialog">Close</button><br>
 	    
-	    <h4 style="color: black;">Apply for Sponsored Visa Job</h4>
+	    <h3 style="color: black;">Sponsored Visa Job Recruitment</h3>
+
+	    <p id="important1" style="color: black;"><b>Important:</b><br><b>1.</b> Work Visa is Sponsored<br><b>2.</b> Flight Ticket is Sponsored<br><b>3.</b> One year Accommodation provided<br><b>4.</b> We cover all visa & Ticket expenses and deduct progressively from your salary once here. </p>
+
+	    <!-- Spinner (Dropdown) -->
+            <select id="jobSelect">
+                <option value="" disabled selected>List of Jobs Available</option>
+                <option value="Light Duty Cleaner">Light Duty Cleaner</option>
+		<option value="Dish Washer">Dish Washer</option>
+		<option value="Fast Food Worker">Fast Food Worker</option>
+		<option value="Cleaner">Cleaner</option>
+		<option value="Construction Laborer">Construction Laborer</option>
+		<option value="Warehouse Worker">Warehouse Worker</option>
+		<option value="Delivery Driver">Delivery Driver</option>
+		<option value="General Laborer">General Laborer</option>
+		<option value="Farm Worker">Farm Worker</option>
+		<option value="Caretaker">Caretaker</option>
+		<option value="Retail Store Assistant">Retail Store Assistant</option>
+		<option value="Hotel Worker">Hotel Worker</option>
+		<option value="Landscaping Worker">Landscaping Worker</option>
+		<option value="Factory Worker">Factory Worker</option>
+		<option value="Kitchen Assistant">Kitchen Assistant</option>
+		<option value="Security Guard">Security Guard</option>
+		<option value="Fruit Picker">Fruit Picker</option>
+		<option value="Garbage Collector">Garbage Collector</option>
+		<option value="Grocery Store Clerk">Grocery Store Clerk</option>
+		<option value="Hotel Porter">Hotel Porter</option>
+		<option value="Laundry Attendant">Laundry Attendant</option>
+		<option value="Cashier">Cashier</option>
+		<option value="Maintenance Worker">Maintenance Worker</option>
+		<option value="Nursery Worker">Nursery Worker</option>
+		<option value="Office Cleaner">Office Cleaner</option>
+		<option value="Parking Lot Attendant">Parking Lot Attendant</option>
+		<option value="Packer">Packer</option>
+		<option value="Painter Helper">Painter Helper</option>
+		<option value="Pet Caretaker">Pet Caretaker</option>
+		<option value="Production Line Worker">Production Line Worker</option>
+		<option value="Stock Clerk">Stock Clerk</option>
+		<option value="Waiter/Waitress">Waiter/Waitress</option>
+		<option value="Valet Parking Attendant">Valet Parking Attendant</option>
+		<option value="Receptionist">Receptionist</option>
+		<option value="Child Care Giver">Child Care Giver</option>
+		<option value="Call Center Agent">Call Center Agent</option>
+		<option value="Car Wash Attendant">Car Wash Attendant</option>
+		<option value="Street Sweeper">Street Sweeper</option>
+		<option value="Home Care Worker">Home Care Worker</option>
+		<option value="Plumber">Plumber</option>
+		<option value="Newspaper Delivery Person">Newspaper Delivery Person</option>
+		<option value="Pizza Delivery Driver">Pizza Delivery Driver</option>
+		<option value="Dishwasher">Dishwasher</option>
+		<option value="Parking Attendant">Parking Attendant</option>
+		<option value="Construction Worker">Construction Worker</option>
+		<option value="Factory Packer">Factory Packer</option>
+		<option value="Sales Girl">Sales Girl</option>
+            </select>
 
             <!-- Spinner (Dropdown) -->
             <select id="countrySelect">
@@ -601,15 +911,23 @@ Our network of vetted professionals offers essential services—from hospitality
                 <option value="Others">Others</option>
             </select>
 
-         
-            <p id="message"></p>
+	   <p id="important2" style="color: black;">English Proficiency Certificate, <b>IETLS</b> or <b>Duolingo</b> are accepted</p>
 
-            <div class="checkbox-container" id="checkboxContainer">
-                <input type="checkbox" id="agreeCheckbox">
-                <label for="agreeCheckbox">I Agree</label>
+	    <div class="checkbox-container" id="checkboxContainerHave">
+                <input type="checkbox" id="ihaveCheckbox">
+                <label for="ihaveCheckbox">I Have English Proficiency Certificate</label>
+            </div>
+	    
+	    <div class="checkbox-container" id="checkboxContainerdontHave">
+                <input type="checkbox" id="idonthaveCheckbox">
+                <label for="idonthaveCheckbox">I Donot Have English Proficiency Certificate</label>
             </div>
 
-            <button class="proceed-button-class" id="proceedButton" disabled>Proceed To Apply</button>
+		<div id="message-container">
+            	<p id="message"></p>
+        	</div>
+
+            <button class="proceed-button-class" id="proceedButton" disabled> Proceed </button>
         </div>
     </div>
 
@@ -629,13 +947,18 @@ Our network of vetted professionals offers essential services—from hospitality
        
         const openDialog = document.getElementById('openDialog');
         const closeDialog = document.getElementById('closeDialog');
+	const clearDialog = document.getElementById('clearDialog');
         const dialogOverlay = document.getElementById('dialogOverlay');
         const countrySelect = document.getElementById('countrySelect');
         const message = document.getElementById('message');
-        const agreeCheckbox = document.getElementById('agreeCheckbox');
-        const checkboxContainer = document.getElementById('checkboxContainer');
+	const ihaveCheckbox = document.getElementById('ihaveCheckbox');
+        const idonthaveCheckbox = document.getElementById('idonthaveCheckbox');
+        const checkboxContainerHave = document.getElementById('checkboxContainerHave');
+	const checkboxContainerdontHave = document.getElementById('checkboxContainerdontHave');
         const proceedButton = document.getElementById('proceedButton');
-	const range_applicationUrl = 'Sheet1!R2'; 
+	const range_applicationUrl = 'Sheet1!R2'
+
+	let selectedCountry = "";
 
 	let applicationUrl = ""; 
 
@@ -739,38 +1062,57 @@ function fetchInsuranceAmounts() {
             dialogOverlay.style.display = 'none';
             resetForm();
         });
-
-	countrySelect.addEventListener('change', function() {
-    	const selectedCountry = countrySelect.value;
-    
-    if (selectedCountry) {
-        const insuranceMessage = insuranceAmounts[selectedCountry] 
-            ? `<b>Important:</b> If you are selected, <b>Visa & Ticket are sponsored</b>. After signing the <b>Job Offer Letter</b>, you will be required to pay <b>Insurance (${insuranceAmounts[selectedCountry]})</b>. Insurance is the only payment during this process.`
-            : `<b>Important:</b> Insurance amount not available. Please contact support.`;
-
-        message.innerHTML = insuranceMessage;
-        message.style.display = 'block'; 
-        checkboxContainer.style.display = 'flex'; 
-    } else {
-        message.style.display = 'none'; 
-        checkboxContainer.style.display = 'none'; 
-    }
-
-    checkConditions(); 
-});
-
-       
-        agreeCheckbox.addEventListener('change', function() {
-            checkConditions(); 
+	clearDialog.addEventListener('click', function() {
+            resetForm();
         });
 
-        function checkConditions() {
-            if (countrySelect.value && agreeCheckbox.checked) {
-                proceedButton.disabled = false;
-            } else {
-                proceedButton.disabled = true;
-            }
-        }
+	countrySelect.addEventListener('change', function() {
+    	selectedCountry = countrySelect.value;
+	
+	 if (selectedCountry) {
+        // Show important2 and checkboxes
+        important2.style.display = 'block';
+        showCheckboxes();
+    } else {
+        // Hide and reset checkboxes and message
+        important2.style.display = 'none';
+        checkboxContainerHave.style.display = 'none';
+	checkboxContainerdontHave.style.display = 'none';
+        ihaveCheckbox.checked = false;
+        idonthaveCheckbox.checked = false;
+        message.style.display = 'none';
+        proceedButton.disabled = true;
+    }
+    
+    });
+
+	ihaveCheckbox.addEventListener('change', function() {
+	if (ihaveCheckbox.checked) {
+        idonthaveCheckbox.checked = false;
+        proceedButton.disabled = false;
+        message.innerHTML = "<b>Great!</b> Since you have English proficiency, you will not pay anything during this process.";
+        message.style.display = 'block';
+    } else {
+        proceedButton.disabled = true;
+        message.style.display = 'none';
+    }
+        });
+
+       
+        idonthaveCheckbox.addEventListener('change', function() {
+	if (idonthaveCheckbox.checked) {
+        ihaveCheckbox.checked = false;
+        proceedButton.disabled = false;
+	
+        message.innerHTML =  `<b>Important:</b> As you donot have either <b>IETLS</b> or <b>Duolingo</b>, To get the JOB, You are required to pay for <b>English Proficency Certification EPC</b> following the below steps; ${insuranceAmounts[selectedCountry]}`;
+        message.style.display = 'block';
+    } else {
+        proceedButton.disabled = true;
+        message.style.display = 'none';
+    }
+        });
+
+        
 
     proceedButton.addEventListener('click', function() {
        if (!proceedButton.disabled && applicationUrl) {
@@ -780,16 +1122,44 @@ function fetchInsuranceAmounts() {
         }
 
 
-
     });
+
+
+
+function showCheckboxes() {
+ihaveCheckbox.checked = false;
+        idonthaveCheckbox.checked = false;
+message.style.display = 'none';
+    document.getElementById('checkboxContainerHave').style.display = 'flex';
+    document.getElementById('checkboxContainerdontHave').style.display = 'flex';
+}
 
         function resetForm() {
             countrySelect.value = "";
+	    jobSelect.value = "";
             message.style.display = 'none';
-            checkboxContainer.style.display = 'none';
-            agreeCheckbox.checked = false;
+            ihaveCheckbox.checked = false;
+	    idonthaveCheckbox.checked = false;
             proceedButton.disabled = true;
+	important2.style.display = 'none';
+        checkboxContainerHave.style.display = 'none';
+	checkboxContainerdontHave.style.display = 'none';
         }
+
+
+//used for working faqs
+   function toggleAnswer(element) {
+        const answerRow = element.parentNode.nextElementSibling;
+        const plusMinus = element.querySelector('.plus-minus');
+
+        if (answerRow.style.display === 'table-row') {
+            answerRow.style.display = 'none';
+            plusMinus.classList.remove('minus');
+        } else {
+            answerRow.style.display = 'table-row';
+            plusMinus.classList.add('minus');
+        }
+    }
 
 
 function updateWhatsAppButton() {
@@ -859,7 +1229,5 @@ window.onload = function() {
 <a id="whatsapp-button" href="#" class="whatsapp-button" target="_blank">
     <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
 </a>
-
-
 </body>
 </html>
