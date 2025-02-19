@@ -76,7 +76,7 @@
 
         .container {
             display: flex;
-            justify-content: space-between; /* Align products horizontally */
+            justify-content: space-between; 
             gap: 15px;
             padding: 20px;
             margin-top: 30px;
@@ -123,8 +123,8 @@
 	    max-width: 100%;
 	    margin: 125px 15px 60px;
             border-radius: 10px;
-            position: relative; /* Positioning context for the image */
-            overflow: hidden; /* Ensures content stays inside */
+            position: relative; 
+            overflow: hidden; 
         }
 
         .text-box {
@@ -133,12 +133,12 @@
             border-radius: 8px;
             display: inline-block;
             position: relative;
-            z-index: 2; /* Ensure text is above the image */
+            z-index: 2; 
         }
 
         .faq {
-            padding-left: 20px; /* Adjusted for responsiveness */
-            padding-right: 20px; /* Adjusted for responsiveness */
+            padding-left: 20px; 
+            padding-right: 20px; 
             padding-top: 20px;
             padding-bottom: 20px;
             background-color: #F4F4F4;
@@ -149,7 +149,7 @@
         table {
 	
             width: 100%;
-            padding: 20px; /* Adjusted for responsiveness */
+            padding: 20px; 
             margin-bottom: 40px;
             border-collapse: collapse;
         }
@@ -188,7 +188,6 @@
         }
 
 
-/* Overlay background */
         .overlay {
             position: fixed;
             top: 0;
@@ -202,7 +201,6 @@
             align-items: center;
         }
 
-/* Dialog box */
         .dialog {
             background: white;
             width: 80%;
@@ -213,10 +211,10 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
             position: relative;
-overflow-y: auto;   /* Enables vertical scrolling */
+	    overflow-y: auto;   
         }
 
-        /* Close button for dialog box */
+   
         .close-btn {
             position: absolute;
             top: 10px;
@@ -255,7 +253,7 @@ overflow-y: auto;   /* Enables vertical scrolling */
             background: darkred;
         }
 
-        /* Dropdown (spinner) dialog*/
+        
         select {
             width: 100%;
             padding: 8px;
@@ -263,18 +261,17 @@ overflow-y: auto;   /* Enables vertical scrolling */
             font-size: 16px;
         }
 
-        /* Message box in dialog*/
         #message {
             font-size: 16px;
             color: #333;
             margin: 10px 0;
-	    text-align: left; /* Left-aligned text */
-            display: none; /* Initially hidden */
+	    text-align: left; 
+            display: none; 
         }
-/* Make the message container scrollable */
+
 #message-container {
-    max-height: 200px;  /* Adjust this value as needed */
-    overflow-y: auto;   /* Enables vertical scrolling */
+    max-height: 200px;  
+    overflow-y: auto;   
     padding: 10px;
     margin-top: 15px;
     border: 1px solid #ccc;
@@ -285,29 +282,28 @@ overflow-y: auto;   /* Enables vertical scrolling */
             font-size: 16px;
             color: #333;
             margin: 10px 0;
-	    text-align: left; /* Left-aligned text */
+	    text-align: left; 
         }
 	#important2 {
             font-size: 16px;
             color: #333;
             margin: 10px 0;
-	    text-align: left; /* Left-aligned text */
+	    text-align: left; 
 	    display: none;
         }
 
-        /* Checkbox container in dialog box */
         .checkbox-container {
             display: flex;
-    align-items: center;
-    justify-content: flex-start;
-        color: #333;
+    	    align-items: center;
+            justify-content: flex-start;
+            color: #333;
             margin: 10px 0;
 	    display: none;
         }
 
         .checkbox-container input {
-width: 16px; /* Standard checkbox size */
-    height: 16px;
+	    width: 16px; 
+    	    height: 16px;
             margin-right: 10px;
         }
 
@@ -438,11 +434,11 @@ width: 16px; /* Standard checkbox size */
 	    font-size: 1.2em;
 	    width: 80%;
 	    max-width: 500px;
-	    margin: 20px auto; /* Centers the container horizontally */
-	    text-align: center; /* Centers text content */
+	    margin: 20px auto; 
+	    text-align: center; 
 	    display: flex;
 	    flex-direction: column;
-	    align-items: center; /* Ensures all elements inside are centered */
+	    align-items: center; 
 	    padding: 15px 30px;
 	    border-radius: 30px;
 	    transition: background-color 0.3s ease;
@@ -467,11 +463,11 @@ width: 16px; /* Standard checkbox size */
 	    font-size: 1.2em;
 	    width: 80%;
 	    max-width: 500px;
-	    margin: 20px auto; /* Centers the container horizontally */
-	    text-align: center; /* Centers text content */
+	    margin: 20px auto; 
+	    text-align: center; 
 	    display: flex;
 	    flex-direction: column;
-	    align-items: center; /* Ensures all elements inside are centered */
+	    align-items: center; 
 	    padding: 15px 30px;
 	    border-radius: 30px;
 	    transition: background-color 0.3s ease;
@@ -503,11 +499,11 @@ width: 16px; /* Standard checkbox size */
 	    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 	    width: 80%;
 	    max-width: 500px;
-	    margin: 20px auto; /* Centers the container horizontally */
-	    text-align: center; /* Centers text content */
+	    margin: 20px auto; 
+	    text-align: center; 
 	    display: flex;
 	    flex-direction: column;
-	    position: relative; /* Allows absolute positioning of child elements */
+	    position: relative;
 	}
         .container001 h1 {
             text-align: center;
@@ -542,7 +538,7 @@ width: 16px; /* Standard checkbox size */
         }
 	#result {
       	    margin-top: 10px;
-	    width: 70%;
+	    width: calc(100% - 40px);
 	    text-align: left;
 	    line-height: 1.8;
     	}
@@ -588,16 +584,16 @@ width: 16px; /* Standard checkbox size */
 
 	.container {
 	    max-width: 100%;
-            flex-direction: column; /* Stack items vertically */
-            align-items: center; /* Center items if desired */
+            flex-direction: column; 
+            align-items: center; 
         }
 
 	.product {
             width: 100%;
         }
         .faq {
-            padding-left: 20px; /* Adjusted for responsiveness */
-            padding-right: 20px; /* Adjusted for responsiveness */
+            padding-left: 20px; 
+            padding-right: 20px; 
             padding-top: 20px;
             padding-bottom: 20px;
             background-color: #F4F4F4;
@@ -608,7 +604,7 @@ width: 16px; /* Standard checkbox size */
 
         table {
             max-width: 100%;
-            padding: 20px; /* Adjusted for responsiveness */
+            padding: 20px; 
             margin-bottom: 40px;
             border-collapse: collapse;
         }
