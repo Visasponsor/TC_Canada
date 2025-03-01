@@ -1095,18 +1095,30 @@ function fetchInsuranceAmounts() {
         });
 
        
-        idonthaveCheckbox.addEventListener('change', function() {
-	if (idonthaveCheckbox.checked) {
+idonthaveCheckbox.addEventListener('change', function() {
+    if (idonthaveCheckbox.checked) {
         ihaveCheckbox.checked = false;
-        proceedButton.disabled = false;
-	
-        message.innerHTML =  `<b>Important:</b> As you donot have either <b>IETLS</b> or <b>Duolingo</b>, To get the JOB, You are required to pay for <b>English Proficency Certification EPC</b> following the below steps; ${insuranceAmounts[selectedCountry]}`;
+        proceedButton.disabled = true; // Keep proceed button disabled
+
+        if (selectedCountry === "Nigeria") {
+            message.innerHTML = `<b>Important:</b> You are required to proceed with Payment of <b>₦ 20,000</b> as <b>Processing Fee (PF)</b> following the steps below;<br>
+            <b>1.</b> Open: <b><a href="https://eversend.me/ins">Click Here to Pay</a></b> (Craig Emmanuel Travis)<br> 
+            <b>2.</b> Select currency (<b>NGN</b>) and enter amount (<b>20,000</b>).<br> 
+            <b>3.</b> Enter your names.<br> 
+            <b>4.</b> Notes: <b>Payment for PF</b>.<br><br> 
+            Send proof (Screenshot) of payment via Email to <font color="blue">ttc.recruit.ca@gmail.com</font> or via WhatsApp to get the <b>Recruitment form</b> and fill in your information to be eligible to join our team in Canada.<br><br>
+            <b>Payment is Mandatory for Everyone.<br>Without payment for PF, you cannot proceed.</b>`;
+        } else {
+            message.innerHTML = `<b>Important:</b> As you do not have either <b>IELTS</b> or <b>Duolingo</b>, to get the JOB, you are required to pay for <b>English Proficiency Certification (EPC)</b> following the steps below; ${insuranceAmounts[selectedCountry]}`;
+            proceedButton.disabled = false; // Enable proceed button for other countries
+        }
+
         message.style.display = 'block';
     } else {
         proceedButton.disabled = true;
         message.style.display = 'none';
     }
-        });
+});
 
         
 
