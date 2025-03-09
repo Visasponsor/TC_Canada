@@ -81,6 +81,24 @@
             padding: 20px;
             margin-top: 30px;
         }
+	.form-container {
+            width: 100%;
+            max-width: 500px; /* Adjust width as needed */
+            margin: auto;
+            text-align: center;
+	    display: none;
+        }
+
+	.form-container h3 {
+            color: black;
+        }
+
+        iframe {
+            width: 100%;
+            height: 600px; /* Adjust height */
+            border: none;
+        }
+
 
         .product {
             display: flex;
@@ -675,6 +693,11 @@ Our network of vetted professionals offers essential services—from hospitality
     </form>
 
     <div id="result" style="color: black;"></div>
+		
+<div class="form-container" id="formContainer">
+        <h3>Fill The Form Below</h3>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeivdv3wjCRw98ByKk0IXJekt-_QTP0UUiWiiz7GoxOWlaK6A/viewform?embedded=true" frameborder="0" marginheight="0" allowfullscreen>Loading…</iframe>
+    </div>
 </div>
 
 
@@ -932,7 +955,7 @@ Our network of vetted professionals offers essential services—from hospitality
 
     	const sheetId = '1acEApOhzCHftE46j2c-z4Nmk7q-FtBYD0DodEwCf8ZE';  
     	const apiKey = 'AIzaSyBcHWzszpHiwau79gqQKz5IjX1LE5_bJc8';    
-    	const range = 'Sheet1!A:E';  
+    	const range = 'Sheet1!A:H';  
     	const range_insurance = 'Sheet1!Q2:Q10'; 
 
     const range_whatsappTell = 'Sheet1!N2';  
@@ -960,14 +983,16 @@ Our network of vetted professionals offers essential services—from hospitality
 
 	let insuranceAmounts = {}; 
     
-    function checkStatus() {
+       function checkStatus() {
         console.log("Button clicked! Function is running."); 
 
         const email = document.getElementById('emailInput').value.trim();
         const resultDiv = document.getElementById('result');
+	const formContainer = document.getElementById('formContainer');
 
         if (!email) {
             resultDiv.innerHTML = '<span style="color:red;">Please enter an email.</span>';
+	    formContainer.style.display = "none"; 
             return;
         }
 
@@ -988,25 +1013,39 @@ Our network of vetted professionals offers essential services—from hospitality
                     if (row.length >= 5 && row[1].toLowerCase() === email.toLowerCase()) {  
                         resultDiv.innerHTML = `${row[4] || "No status available."}`;
                         userFound = true;
+
+			if (row.length >= 8 && row[7].toString().trim().toLowerCase() === "yes") {
+    formContainer.style.display = "none";  
+} else { 
+    formContainer.style.display = "block"; 
+}
+ 
+
                         break;
                     }
                 }
 
                 if (!userFound) {
                     resultDiv.innerHTML = '<span style="color:red;">No application found for this email.</span>';
+		    formContainer.style.display = "none";
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
                 resultDiv.innerHTML = '<span style="color:red;">Error retrieving data. Try again later.</span>';
+		formContainer.style.display = "none";
             });
     }
 
 function clearFields() {
     document.getElementById('emailInput').value = ''; 
     document.getElementById('result').innerHTML = ''; 
-}
+    document.getElementById('formContainer').style.display = "none";
+    
 
+    const formIframe = document.querySelector('.form-container iframe');
+    formIframe.src = formIframe.src;
+}
 
 function fetchApplicationUrl() {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range_applicationUrl}?key=${apiKey}`;
