@@ -325,6 +325,73 @@
             margin-right: 10px;
         }
 
+	    /* Adjusting the form container to align job-offer section */
+.form-container {
+    max-width: 100%;
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    display: none;
+    margin: 10px;
+    text-align: left; /* Ensures content aligns left */
+}
+
+
+.job-offer {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; /* Aligns to the left */
+    gap: 5px; /* Adds spacing between options */
+}
+
+.job-offer label {
+    display: inline-flex; /* Allows input and text to stay on the same line */
+    align-items: center; /* Aligns text and radio button */
+    cursor: pointer;
+    font-size: 15px;
+    padding: 5px;
+    color: white;
+}
+
+.job-offer input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px; /* Ensures spacing between radio button and label text */
+}
+
+
+.date-picker label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.date-picker input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Submit Button */
+.form-container button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+.form-container button:hover {
+    background-color: #218838;
+}
+
         .proceed-button-class:disabled {
             background: #ccc;
             cursor: not-allowed;
@@ -626,6 +693,32 @@
             margin-bottom: 40px;
             border-collapse: collapse;
         }
+		        .form-container {
+        max-width: 100%;
+        margin: 10px auto; /* Center the form */
+        padding: 10px; /* Reduce padding */
+        border-radius: 8px;
+        }
+
+    .job-offer {
+        gap: 10px; /* Increase spacing for better touchability */
+    }
+
+    .job-offer label {
+        font-size: 14px; /* Reduce font size for better fit */
+        padding: 8px; /* Increase padding for better interaction */
+    }
+
+    .job-offer input[type="radio"] {
+        width: 16px;
+        height: 16px;
+        margin-right: 6px;
+    }
+
+    .date-picker input {
+        font-size: 14px;
+        padding: 6px;
+    }
 
 
 	.footer-section h3 {
@@ -695,8 +788,27 @@ Our network of vetted professionals offers essential services—from hospitality
     <div id="result" style="color: black;"></div>
 		
 <div class="form-container" id="formContainer">
-        <h3>Fill The Form Below</h3>
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeivdv3wjCRw98ByKk0IXJekt-_QTP0UUiWiiz7GoxOWlaK6A/viewform?embedded=true" frameborder="0" marginheight="0" allowfullscreen>Loading…</iframe>
+
+        <label>Select One Option below</label>
+        <div class="job-offer">
+            <label>
+                <input type="radio" name="jobOffer" value="accept" id="acceptOffer" checked>
+                I Accept Job Offer
+            </label>
+            <label>
+                <input type="radio" name="jobOffer" value="reject" id="rejectOffer">
+                I Reject Job Offer
+            </label>
+        </div>
+
+        <div class="date-picker">
+            <label for="paymentDate">When will you be paying for EPC?</label>
+            <input type="date" id="paymentDate">
+        </div>
+
+        <!-- Submit Button -->
+        <button id="submitBtn">Submit</button>
+
     </div>
 </div>
 
@@ -1041,10 +1153,7 @@ function clearFields() {
     document.getElementById('emailInput').value = ''; 
     document.getElementById('result').innerHTML = ''; 
     document.getElementById('formContainer').style.display = "none";
-    
 
-    const formIframe = document.querySelector('.form-container iframe');
-    formIframe.src = formIframe.src;
 }
 
 function fetchApplicationUrl() {
@@ -1271,6 +1380,47 @@ window.onload = function() {
     updateWhatsAppButton(); 
 }; 
 
+</script>
+
+	<script>
+    document.getElementById('submitBtn').addEventListener('click', async function () {
+        // Get selected job offer option
+        const jobOffer = document.querySelector('input[name="jobOffer"]:checked');
+        const paymentDate = document.getElementById('paymentDate').value;
+
+        if (!jobOffer || !paymentDate) {
+            alert("Please fill in all required fields.");
+            return;
+        }
+
+        // Fetch WhatsApp number from Google Sheets
+        const sheetId = '1acEApOhzCHftE46j2c-z4Nmk7q-FtBYD0DodEwCf8ZE';
+        const apiKey = 'AIzaSyBcHWzszpHiwau79gqQKz5IjX1LE5_bJc8';
+        const range_whatsappTell = 'Sheet1!N2';
+
+        try {
+            const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range_whatsappTell}?key=${apiKey}`);
+            const data = await response.json();
+            
+            if (!data.values || data.values.length === 0) {
+                alert("Could not fetch WhatsApp number.");
+                return;
+            }
+
+            const whatsappNumber = data.values[0][0].replace(/\D/g, ''); // Ensure it's a valid number
+
+            // Form WhatsApp message
+            const message = `Hello, I would like to ${jobOffer.value} the job offer. I will be making payment on ${paymentDate}.`;
+
+            // Open WhatsApp
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+
+        } catch (error) {
+            console.error("Error fetching WhatsApp number:", error);
+            alert("Failed to retrieve contact details.");
+        }
+    });
 </script>
 
 <a id="whatsapp-button" href="#" class="whatsapp-button" target="_blank">
