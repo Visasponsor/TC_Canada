@@ -1368,9 +1368,11 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                         userFound = true;
 
 			if (row.length >= 8 && row[7].toString().trim().toLowerCase() === "yes") {
-    formContainer.style.display = "none";  
+    formContainer.style.display = "none";
+document.getElementById("payment-container").style.display = "none";  
 } else { 
     formContainer.style.display = "block"; 
+document.getElementById("payment-container").style.display = "none";
 }
  
 
@@ -1381,12 +1383,14 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!userFound) {
                     resultDiv.innerHTML = '<span style="color:red;">No application found for this email.</span>';
 		    formContainer.style.display = "none";
+			document.getElementById("payment-container").style.display = "none";
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
                 resultDiv.innerHTML = '<span style="color:red;">Error retrieving data. Try again later.</span>';
 		formContainer.style.display = "none";
+		document.getElementById("payment-container").style.display = "none";
             });
     }
 
