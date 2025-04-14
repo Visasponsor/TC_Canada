@@ -208,13 +208,28 @@
 .job-offer {
     display: flex;
     flex-direction: column; 
-    align-items: flex-start; /* Aligns to the left */
-    gap: 5px; /* Adds spacing between options */
+    align-items: flex-start; 
+    gap: 5px; 
 }
+	     .epc-button1 {
+    color: white;
+    background-color: green;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .epc-button:hover1 {
+    background-color: darkgreen;
+  }
+
 
 .job-offer label {
-    display: inline-flex; /* Allows input and text to stay on the same line */
-    align-items: center; /* Aligns text and radio button */
+    display: inline-flex; 
+    align-items: center; 
     cursor: pointer;
     font-size: 15px;
     padding: 5px;
@@ -224,7 +239,7 @@
 .job-offer input[type="radio"] {
     width: 18px;
     height: 18px;
-    margin-right: 8px; /* Ensures spacing between radio button and label text */
+    margin-right: 8px; 
 }
 
 
@@ -270,8 +285,8 @@
 	    max-width: 100%;
 	    margin: 125px 15px 60px;
             border-radius: 10px;
-            position: relative; /* Positioning context for the image */
-            overflow: hidden; /* Ensures content stays inside */
+            position: relative; 
+            overflow: hidden; 
         }
 
         .text-box {
@@ -280,12 +295,12 @@
             border-radius: 8px;
             display: inline-block;
             position: relative;
-            z-index: 2; /* Ensure text is above the image */
+            z-index: 2; 
         }
 
         .faq {
-            padding-left: 20px; /* Adjusted for responsiveness */
-            padding-right: 20px; /* Adjusted for responsiveness */
+            padding-left: 20px;
+            padding-right: 20px; 
             padding-top: 20px;
             padding-bottom: 20px;
             background-color: #F4F4F4;
@@ -296,7 +311,7 @@
         table {
 	
             width: 100%;
-            padding: 20px; /* Adjusted for responsiveness */
+            padding: 20px; 
             margin-bottom: 40px;
             border-collapse: collapse;
         }
@@ -364,21 +379,15 @@ text-align: center;
 
 select {
     width: 100%;
-    padding: 6px; /* Reduce padding */
-    margin: 5px 0; /* Reduce top & bottom margin */
+    padding: 6px; 
+    margin: 5px 0; 
     font-size: 16px;
-    line-height: normal; /* Ensures uniform height */
-    display: block; /* Consistent spacing with other elements */
-}
+    line-height: normal; 
+    display: block; 
 
 select option:disabled {
-    color: grey; /* Change the color of disabled options */
+    color: grey;
 }
-
-
-
-
-
 	.dialog label {
      display: block;
             text-align: left;
@@ -1258,7 +1267,17 @@ Our network of vetted professionals offers essential services—from hospitality
 	<div id="epcSection" style="display: none;">
 	    <input type="text" id="epc-agree" placeholder="Enter I Agree" required><br>
 	    <p><small style="color:grey;"><b style="color:green;">Important:</b> EPC: English Proficiency Certification<br>The EPC is a Mandatory requirement by the Embassy. Only persons who have paid for it will be allowed to sign the Job Contract and proceed to visa Procedures</small></p><br><br><br><br>
-	    
+
+	    <p style="color:black; text-align: left;"><b>Want to be integrated directly?</b> <span style="color: grey;">(Optional)</span><br>
+	    <span style="display: inline-block; margin-top: 8px;">
+	    Direct Integration/Recruitment is for candidates who are ready to pay for EPC immediately (NOW) and join our current batch. This fast-track option is meant to cover urgent recruitment and <span style="color: green; font-weight: bold">guarantees a 5-year work visa and full support for Permanent Residence</span>. 
+	    </span>
+<a href="https://wa.me/17828234693?text=Hello%2C%20I%20wish%20to%20pay%20EPC%20for%20a%20Direct%20Intergration%20into%20the%20current%20batch%20of%20recruitments"
+   target="_blank"
+   class="epc-button1">
+   💬 Pay EPC Now for Direct Integration
+</a></p><br>
+		
 	    <label for="select-epc-pay">Select the Option that best reflect you</label>
             <select id="select-epc-pay" onchange="toggleDateContainer()">
                 <option value="" disabled selected>Select an Option</option>
