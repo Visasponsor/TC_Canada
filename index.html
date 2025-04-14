@@ -208,28 +208,13 @@
 .job-offer {
     display: flex;
     flex-direction: column; 
-    align-items: flex-start; 
-    gap: 5px; 
+    align-items: flex-start; /* Aligns to the left */
+    gap: 5px; /* Adds spacing between options */
 }
-	     .epc-button1 {
-    color: white;
-    background-color: green;
-    padding: 8px 12px;
-    text-decoration: none;
-    border-radius: 5px;
-    display: inline-block;
-    margin-top: 5px;
-    transition: background-color 0.3s ease;
-  }
-
-  .epc-button:hover1 {
-    background-color: darkgreen;
-  }
-
 
 .job-offer label {
-    display: inline-flex; 
-    align-items: center; 
+    display: inline-flex; /* Allows input and text to stay on the same line */
+    align-items: center; /* Aligns text and radio button */
     cursor: pointer;
     font-size: 15px;
     padding: 5px;
@@ -239,7 +224,7 @@
 .job-offer input[type="radio"] {
     width: 18px;
     height: 18px;
-    margin-right: 8px; 
+    margin-right: 8px; /* Ensures spacing between radio button and label text */
 }
 
 
@@ -270,6 +255,21 @@
     transition: background 0.3s;
 }
 
+ .epc-button1 {
+    color: white;
+    background-color: green;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .epc-button:hover1 {
+    background-color: darkgreen;
+  }
+
 .form-container button:hover {
     background-color: #218838;
 }
@@ -285,8 +285,8 @@
 	    max-width: 100%;
 	    margin: 125px 15px 60px;
             border-radius: 10px;
-            position: relative; 
-            overflow: hidden; 
+            position: relative; /* Positioning context for the image */
+            overflow: hidden; /* Ensures content stays inside */
         }
 
         .text-box {
@@ -295,12 +295,12 @@
             border-radius: 8px;
             display: inline-block;
             position: relative;
-            z-index: 2; 
+            z-index: 2; /* Ensure text is above the image */
         }
 
         .faq {
-            padding-left: 20px;
-            padding-right: 20px; 
+            padding-left: 20px; /* Adjusted for responsiveness */
+            padding-right: 20px; /* Adjusted for responsiveness */
             padding-top: 20px;
             padding-bottom: 20px;
             background-color: #F4F4F4;
@@ -311,7 +311,7 @@
         table {
 	
             width: 100%;
-            padding: 20px; 
+            padding: 20px; /* Adjusted for responsiveness */
             margin-bottom: 40px;
             border-collapse: collapse;
         }
@@ -379,15 +379,21 @@ text-align: center;
 
 select {
     width: 100%;
-    padding: 6px; 
-    margin: 5px 0; 
+    padding: 6px; /* Reduce padding */
+    margin: 5px 0; /* Reduce top & bottom margin */
     font-size: 16px;
-    line-height: normal; 
-    display: block; 
+    line-height: normal; /* Ensures uniform height */
+    display: block; /* Consistent spacing with other elements */
+}
 
 select option:disabled {
-    color: grey;
+    color: grey; /* Change the color of disabled options */
 }
+
+
+
+
+
 	.dialog label {
      display: block;
             text-align: left;
