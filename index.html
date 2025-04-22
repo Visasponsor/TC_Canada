@@ -1295,15 +1295,18 @@ Our network of vetted professionals offers essential services—from hospitality
 	    <input type="text" id="epc-agree" placeholder="Enter I Agree" required><br>
 	    <p><small style="color:grey;"><b style="color:green;">Important:</b> EPC: English Proficiency Certification<br>The EPC is a Mandatory requirement by the Embassy. Only persons who have paid for it will be allowed to sign the Job Contract and proceed to visa Procedures</small></p><br><br><br><br>
 
-	    <p style="color:black; text-align: left;"><b>Want to be integrated directly?</b> <span style="color: grey;">(Optional)</span><br>
+	    	    <p style="color:black; text-align: left;"><b>Want a Direct Recruitment?</b> <span style="color: grey;">(Optional)</span><br>
 	    <span style="display: inline-block; margin-top: 8px;">
-	    Direct Integration/Recruitment is for candidates who are ready to pay for EPC immediately (NOW) and join our current batch. This fast-track option is meant to cover urgent recruitment and <span style="color: green; font-weight: bold">guarantees a 5-year work visa and full support for Permanent Residence</span>. 
-	    </span>
-<a href="https://wa.me/17828234693?text=Hello%2C%20I%20wish%20to%20pay%20EPC%20for%20a%20Direct%20Intergration%20into%20the%20current%20batch%20of%20recruitments"
-   target="_blank"
-   class="epc-button1">
-   💬 Pay EPC Now for Direct Integration
-</a></p><br>
+	    Direct Recruitment is for candidates who are ready to pay for EPC immediately (NOW) and join our current batch. This fast-track option is meant to cover urgent positions and <span style="color: green; font-weight: bold">guarantees a 5-year work visa and full support for Permanent Residence</span>. 
+	    Click the button below to pay for <b>EPC</b> Now and join our current batch through direct recruitment.</span>
+
+ <a id="epcButton"
+     href="#"
+     target="_blank"
+     class="epc-button1">
+    💬 Pay EPC Now for Direct Recruitment
+  </a></p><br>
+
 		
 	    <label for="select-epc-pay">Select the Option that best reflect you</label>
             <select id="select-epc-pay" onchange="toggleDateContainer()">
@@ -1653,23 +1656,47 @@ function fetchInsuranceAmounts() {
         .catch(error => console.error("Error fetching insurance amounts:", error));
 }
 
-countrySelect.addEventListener('change', function() { 
-    let selectedCountry = countrySelect.value;
+const fastPayCountries = ['Cameroon','Ghana','Uganda','Nigeria'];
+
+countrySelect.addEventListener('change', function() {
+    const selectedCountry = this.value;
 
     if (selectedCountry && insuranceAmounts[selectedCountry]) {
-	epcSection.style.display = "block";  
-	message.innerHTML = `If selected, You will be required to pay (${insuranceAmounts[selectedCountry]}) for <b>EPC</b>:`;
-        message.style.display = 'block';
+      // show the EPC section & update text
+      epcSection.style.display = 'block';
+      message.innerHTML = 
+        `If selected, you will be required to pay <b>${insuranceAmounts[selectedCountry]}</b> for EPC:`;
+      message.style.display = 'block';
 
-        epcPaySelect.innerHTML = `
-            <option value="" disabled selected>Select an Option</option>
-            <option value="Already-Have-EPC">I already have the <b>${insuranceAmounts[selectedCountry]}</b> required for EPC</option>
-            <option value="Donot-have-EPC">For now, I don't have the ${insuranceAmounts[selectedCountry]} for EPC</option>
-        `;
+      epcPaySelect.innerHTML = `
+        <option value="" disabled selected>Select an Option</option>
+        <option value="Already-Have-EPC">
+          I already have the <b>${insuranceAmounts[selectedCountry]}</b> required for EPC
+        </option>
+        <option value="Donot-have-EPC">
+          For now, I don't have the ${insuranceAmounts[selectedCountry]} for EPC
+        </option>
+      `;
+
+      if (fastPayCountries.includes(selectedCountry)) {
+
+      const params = new URLSearchParams({
+        country: selectedCountry,
+        amount:  insuranceAmounts[selectedCountry]
+      });
+
+        epcButton.href = 'everpayment.html?' + params.toString();
+        epcButton.target = '_self';
+      } else {
+        epcButton.href = 
+          'https://wa.me/17828234693?text=Hello%2C%20I%20wish%20to%20pay%20EPC%20for%20a%20Direct%20Intergration%20into%20the%20current%20batch%20of%20recruitments';
+        epcButton.target = '_blank';
+      }
+
     } else {
-        epcSection.style.display = "none"; 
+      epcSection.style.display = 'none';
     }
-});
+  });
 
 
 function resetForm() {
