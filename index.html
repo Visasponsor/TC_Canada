@@ -95,6 +95,95 @@
 	}
 
 
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .popup-box {
+      background-color: #fff;
+      padding: 20px 30px 30px;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 10px;
+      position: relative;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .popup-box img {
+      width: 60px;
+      margin-bottom: 10px;
+    }
+
+    .popup-box h3 {
+      margin: 10px 0;
+      color: #111;
+    }
+
+    .popup-box p {
+      font-size: 16px;
+      color: #333;
+    }
+
+    .popup-box .cta-btn {
+      background-color: #fe2c55;
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 15px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .popup-box .cta-btn:hover {
+      background-color: #d91f45;
+    }
+
+    .close-btn1 {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 22px;
+      color: #888;
+      cursor: pointer;
+    }
+
+    .close-btn1:hover {
+      color: #000;
+    }
+
+    .ad-label {
+      position: absolute;
+      top: 10px;
+      left: 15px;
+      font-size: 12px;
+      background-color: #000;
+      color: #fff;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    @keyframes fadeIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+
+
         .container {
             display: flex;
             justify-content: space-between; /* Align products horizontally */
@@ -830,6 +919,37 @@ background-color: #28a745; /* Green */
 	    margin-right: 15px;
         }
 
+      .popup-box {
+        padding: 15px 20px 25px;
+margin: 5px;
+      }
+
+      .popup-box img {
+        width: 50px;
+      }
+
+      .popup-box h3 {
+        font-size: 18px;
+      }
+
+      .popup-box p {
+        font-size: 14px;
+      }
+
+      .popup-box .cta-btn {
+        font-size: 15px;
+        padding: 10px 18px;
+      }
+
+      .close-btn1 {
+        font-size: 20px;
+      }
+
+      .ad-label {
+        font-size: 10px;
+        padding: 1px 5px;
+      }
+
 	.text-box {
             padding: 10px;
 	    width: 80%;
@@ -934,6 +1054,21 @@ max-width: 100%;
     <div class="display-section" style="background-image: url('yep.png'); background-size: cover; background-position: center;">
        
     </div>
+
+
+
+<div class="popup-overlay" id="popupAd">
+  <div class="popup-box">
+    <div class="ad-label">AD</div>
+    <span class="close-btn1" onclick="closePopup()">×</span>
+    <img src="https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg" alt="TikTok Logo">
+    <h3>Get Paid to Watch & Like Videos on TikTok!</h3>
+    <p>Make money just by watching and liking TikTok videos. Join others who earn daily doing what they love.</p>
+    <button class="cta-btn" onclick="window.location.href='tik.html'">Join Now & Start Earning</button>
+  </div>
+</div>
+
+
 
 <div class="container">
     <!-- Product 1 -->
@@ -1388,6 +1523,16 @@ Our network of vetted professionals offers essential services—from hospitality
 	<p style="color:blue;">We Will Get Back To You Within 48 Hours</p>
         </div>
     </div>
+
+
+<script>
+  function closePopup() {
+    document.getElementById("popupAd").style.display = "none";
+  }
+
+
+</script>
+
 
 <script>
    	const sheetId = '1acEApOhzCHftE46j2c-z4Nmk7q-FtBYD0DodEwCf8ZE';  
@@ -2071,12 +2216,28 @@ function updateFooterEmail() {
 }
 
 window.onload = function() {
-    fetchApplicationUrl();
-    fetchInsuranceAmounts();
-    updateFooterContact();
-    updateFooterEmail();
-    updateWhatsAppButton(); 
-}; 
+  // Run first set of functions
+  fetchApplicationUrl();
+  fetchInsuranceAmounts();
+  updateFooterContact();
+  updateFooterEmail();
+  updateWhatsAppButton(); 
+
+  // Show popup ad after 2 seconds
+  setTimeout(function() {
+    const popup = document.getElementById("popupAd");
+    popup.style.display = "flex";
+
+    // Hide popup after 5 seconds
+    setTimeout(function() {
+      if (popup.style.display === "flex") {
+        popup.style.display = "none";
+      }
+    }, 5000);
+
+  }, 2000);
+};
+
 
 
 </script>
