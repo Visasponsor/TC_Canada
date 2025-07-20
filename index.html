@@ -1057,7 +1057,8 @@ max-width: 100%;
 
 
 
-<div class="popup-overlay" id="popupAd">
+ <!-- Meant for tiktok advert
+ <div class="popup-overlay" id="popupAd"> 
   <div class="popup-box">
     <div class="ad-label">AD</div>
     <span class="close-btn1" onclick="closePopup()">×</span>
@@ -1066,7 +1067,8 @@ max-width: 100%;
     <p>Make money just by watching and liking TikTok videos. Join others who earn daily doing what they love.</p>
     <button class="cta-btn" onclick="window.location.href='tik.html'">Join Now & Start Earning</button>
   </div>
-</div>
+</div> -->
+
 
 
 
@@ -1525,13 +1527,11 @@ Our network of vetted professionals offers essential services—from hospitality
     </div>
 
 
-<script>
+<!-- <script>
   function closePopup() {
     document.getElementById("popupAd").style.display = "none";
   }
-
-
-</script>
+</script> -->
 
 
 <script>
@@ -2223,12 +2223,13 @@ window.onload = function() {
   updateFooterEmail();
   updateWhatsAppButton(); 
 
-  // Show popup ad after 2 seconds
+  /*
+  // Show popup ad after 10 seconds
   setTimeout(function() {
     const popup = document.getElementById("popupAd");
     popup.style.display = "flex";
 
-    // Hide popup after 5 seconds
+    // Hide popup after 10 seconds
     setTimeout(function() {
       if (popup.style.display === "flex") {
         popup.style.display = "none";
@@ -2236,7 +2237,9 @@ window.onload = function() {
     }, 10000);
 
   }, 10000);
+  */
 };
+
 
 
 
