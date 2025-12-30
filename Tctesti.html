@@ -224,18 +224,46 @@ align-items: center;
             flex-direction: column;
             justify-content: center;
         }
-        .name {
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 5px;
-        }
-        .date {
-            font-size: 14px;
-            color: #777;
-            text-align: center;
-            margin-bottom: 10px;
-        }
+
+.name {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 2px;
+}
+
+.date {
+    font-size: 14px;
+    color: #555;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.email {
+    font-size: 14px;
+    margin-bottom: 6px;
+    text-align: left;
+}
+
+/* visible email */
+.email.visible {
+    color: #0f3460;
+    font-weight: 500;
+}
+
+/* hidden email */
+.email.hidden {
+    color: #999;
+    font-style: italic;
+}
+
+/* anonymous email */
+.email.anonymous {
+    color: #999;
+    font-style: italic;
+}
+
+
         .review {
             font-size: 16px;
             color: black;
@@ -367,6 +395,16 @@ max-width: 90%;
         font-size: 12px;
     }
 
+.email {
+        font-size: 12px;
+    }
+
+.name,
+    .email,
+    .country {
+        text-align: center;
+    }
+
     .review {
         font-size: 14px;
     }
@@ -420,27 +458,30 @@ max-width: 90%;
     <div class="testimonial-card">
         <img src="pp8.jpeg" alt="Proof of delivery">
         <div class="text-content">
-            <div class="name">Emmanuel Awal MAGESA.</div>
+            <div class="name">Bello Emmanuel MAGESA</div>
+            <div class="email visible">Email: belloemmanuel1308@gmail.com</div>
             <div class="date">From: Kenya</div>
-            <div class="review">"I never thought moving to Canada would be this easy! At one point, i felt skeptical. After paying for my COS & AR, the process took about 2 months. Now, I’m in Toronto, working as an office cleaner and settling into my new life. The accommodation provided for one year has been a lifesaver. I highly recommend this program!"</div>
+            <div class="review">"I never thought moving to Canada would be this easy! At one point, i felt skeptical. After paying for my COS & AR, the process took about 3 months. Now, I’m in Toronto, working as an office cleaner and settling into my new life. The accommodation provided for one year has been a lifesaver. I highly recommend this program!"</div>
         </div>
     </div>
 
 <div class="testimonial-card">
         <img src="pp9.jpeg" alt="Proof of delivery">
         <div class="text-content">
-            <div class="name">Samuel Adebayo Okafor</div>
-            <div class="date">From: Nigeria</div>
-            <div class="review">"I won’t lie, I thought this was one of those scams we hear about everyday. My cousin had applied and told me to try, but I refused. A few months later, he showed me his visa approval. That’s when I knew I had to give it a shot. I applied, paid for EPC, then signed some documents. I collected my visa from the embassy today. Lesson learned—never let fear stop you from taking opportunities!"</div>
+            <div class="name">Fonyuy Clintone Ochieng</div>
+            <div class="email visible">clintoneochiengoginga72@gmail.com</div>
+            <div class="date">From: Cameroon</div>
+            <div class="review">"I won’t lie, I thought this was one of those scams we see everyday. My cousin had applied and told me to try, but I refused. A few months later, he showed me his visa approval. That’s when I knew I had to give it a shot. I applied, paid for my COS for direct integration, then signed some documents. I collected my visa from the embassy today. Lesson learned, never let fear stop you from taking on opportunities!"</div>
         </div>
     </div>
 
  <div class="testimonial-card">
         <img src="pp3.jpeg" alt="Proof of delivery">
         <div class="text-content">
-            <div class="name">Fatoumata Kone</div>
+            <div class="name">Blessing Fatoumata Josephine</div>
+            <div class="email visible">blessingjosephinesimon6@gmail.com</div>
             <div class="date">From: <b>Ghana<b></b></div>
-            <div class="review">"I was about to pay an agent in Accra GHS 15,000 to ‘help’ me when i came through this programm on Tiktok. I was skeptical, but i decided to proceed. I only paid for EPC. The Visa and Flight ticket were paid for. I recently arrived here with my Work visa as a Care Giver. They are now working on my brothers process."</div>
+            <div class="review">"I was about to pay an agent in Accra GHS 15,000 to help me when i came through this programm on Tiktok. I was skeptical, but i decided to proceed. I only paid for COS. The Visa and Flight ticket were all paid for as promissed. I recently arrived here with my Work visa as a Care Giver. They are now working on my brothers process."</div>
         </div>
     </div>
 
@@ -448,16 +489,19 @@ max-width: 90%;
     <div class="testimonial-card">
         <img src="pp1.jpeg" alt="Proof of delivery">
         <div class="text-content">
-            <div class="name">Linda Akinyi Ndirangu.</div>
-            <div class="date">From: <b>South Africa</b></div>
-            <div class="review">"Coming from Kenya, I was unsure about the sponsorships, especially as they do not have an office in kenya. This program proved me wrong! Within three months, I had my work visa for caregiver job. The team guided me through every step in the process, i arrived here on February 27th."</div>
+            <div class="name">O. Amenze</div>
+            <div class="email visible">osarenkhoeamenze617@gmail.com</div>
+            <div class="date">From: <b>Kenya</b></div>
+            <div class="review">"Coming from Kenya, I was unsure about the sponsorships, especially as they do not have an office in kenya. This program proved me wrong! Within three months, I had my work visa for caregiver job. The team guided me through every step in the process, i arrived here in November 2025 to work as caregiver."</div>
         </div>
     </div>
     
     <div class="testimonial-card">
         <img src="pp11.jpg" alt="Proof of delivery">
         <div class="text-content">
-            <div class="name">Joseph Opoku K.</div>
+            <div class="name">Felix Nance Dordzi</div>
+            <div class="email visible">felixnance49@gmail.com</div>
+            <div class="date">From: <b>Kenya</b></div>
             <div class="review">"My wife and I applied together from Ghana. She got a job as a nurse, and I’m working as a warehouse assistant. Thank you for this amazing opportunity!"</div>
         </div>
     </div>
@@ -465,8 +509,10 @@ max-width: 90%;
     <div class="testimonial-card">
         <img src="pp12.jpg" alt="Proof of delivery">
         <div class="text-content">
-            <div class="name">Sarah Niyonsenga T.</div>
-            <div class="review">"I’m from Rwanda, and my biggest fear was not getting scammed. But everything went well. I paid for the EPC, signed a couple of documents that i received from the company and about two months later, I was flying to Canada. Now, I work as a caregiver and love my new life!"</div>
+            <div class="name">Ngo Penda Biboum L.</div>
+            <div class="email visible">ngopendabiboumlydiegrace291@gmail.com</div>
+            <div class="date">From: <b>Cameroon</b></div>
+            <div class="review">"I’m from Cameroon, and my biggest fear was not getting scammed. But everything went well. I paid for the COS, after which my Job Offer Letter was sent and about three months later, I was flying to Canada. Now, I work as receptionist and i love my new life. We travelled in a group of 7 and the only thing we paid for is the COS"</div>
         </div>
     </div>
     
@@ -474,6 +520,8 @@ max-width: 90%;
         <img src="pp13.jpg" alt="Proof of delivery">
         <div class="text-content">
             <div class="name">Michael Wanjiru.</div>
+            <div class="email hidden">Email hidden by user</div>
+            <div class="date">From: <b>Kenya</b></div>
             <div class="review">"I can’t thank these guys enough! i am from kenya, working as a cleaner in Edmonton"</div>
         </div>
     </div>
@@ -481,9 +529,9 @@ max-width: 90%;
     <div class="testimonial-card">
         <img src="pp5.jpeg" alt="Proof of delivery">
         <div class="text-content">
-            <div class="name">Derrick Kofi Asamoah</div>
-            <div class="date">Posted on: March 1, 2025</div>
-            <div class="review">"I cannot express how grateful I am for this opportunity. I applied in December, paid for my EPC. My visa was approved on February, the company later booked my flight ticket! I now work as a warehouse assistant in Calgary. It’s not an easy job, but it pays well, and I am saving to bring my wife and son here soon."</div>
+            <div class="name">Okolo Uju Benita Asemota </div>
+            <div class="email visible">okoloujubenita374@gmail.com</div>
+            <div class="review">"I cannot express how grateful I am for this opportunity. I was based in the United Kingdom with my family and absolutely wanted to move to Canada. I applied in July 2025, paid COS immediately for direct integration. My visa, that of my husband and my2 children were all approved. we moved to canada here in November 2025, We are now based in Calgary."</div>
         </div>
     </div>
 
@@ -491,6 +539,8 @@ max-width: 90%;
         <img src="pp6.jpeg" alt="Proof of delivery">
         <div class="text-content">
             <div class="name">Naomi Wambui Karanja</div>
+            <div class="email hidden">Email hidden by user</div>
+            <div class="date">From: Kenya</div>
             <div class="review">"I was so scared that this wouldn’t work, but I took a leap of faith. The process took exactly three months."</div>
         </div>
     </div>
@@ -498,15 +548,19 @@ max-width: 90%;
 <div class="testimonial-card">
         <img src="pp10.jpeg" alt="Proof of delivery">
         <div class="text-content">
-            <div class="name">Ahmed Salim Said</div>
-            <div class="review">"I am in Ghana. I had to withdraw from the process due to health issues, but I was refunded all of what i paid for EPC. I appreciate the fairness. Maybe I’ll try again next year when my health improves."</div>
+            <div class="name">Michael Adesina O.</div>
+            <div class="email visible">michealadesina834@gmail.com</div>
+            <div class="date"> </div>
+            <div class="review">"I am in Ghana. I had to withdraw from the process due to health issues, but I was fully refunded all of what i paid for COS. I appreciate your fairness and understanding. hopefully, I’ll try again next year when my health improves."</div>
         </div>
     </div>
 
     <div class="testimonial-card">
         <img src="pp23.jpg" alt="Proof of delivery">
         <div class="text-content">
-            <div class="name">Rita Chinenye Okafor</div>
+            <div class="name">Bukari Selimatu Okafor</div>
+            <div class="email visible">Bukariselimatu9@gmail.com</div>
+            <div class="date">From: Nigeria</div>
             <div class="review">"I arrived in Toronto some weeks ago! I was placed as a nanny with a wonderful family, the salary is good too. far better than what i was making in Nigeria"</div>
         </div>
     </div>
@@ -515,7 +569,9 @@ max-width: 90%;
         <img src="pp24.jpg" alt="Proof of delivery">
         <div class="text-content">
             <div class="name">Moses John Katongole</div>
-            <div class="review">"Leaving Uganda to work in Canada felt impossible, but it happened! I started as a cleaner, and now I’m taking online courses to qualify for better jobs. The opportunity was all I needed to change my future."</div>
+            <div class="email hidden">Email hidden by user</div>
+            <div class="date">From: Uganda</div>
+            <div class="review">"Leaving Uganda to work in Canada felt impossible, but it happened! I started as a cleaner, and now I’m taking online courses to qualify for other jobs. The opportunity was all I needed to change my future."</div>
         </div>
     </div>
 
@@ -523,7 +579,9 @@ max-width: 90%;
         <img src="pp10.jpeg" alt="Proof of delivery">
         <div class="text-content">
             <div class="name">Patience Ayebazibwe</div>
-            <div class="review">"My brother convinced me to apply, i didn't want to because i thought it was a scam or something. My visa was approved after 2 months."</div>
+            <div class="email hidden">Email hidden by user</div>
+            <div class="date"></div>
+            <div class="review">"My brother convinced me to apply, i didn't want to because i thought it was a scam or something. i finally proceeded, My visa was approved after 3 months. Forever grateful TC Canada"</div>
         </div>
     </div>
 
@@ -532,24 +590,29 @@ max-width: 90%;
         <img src="pp25.jpg" alt="Proof of delivery">
         <div class="text-content">
             <div class="name">Samuel Karisa Mutua</div>
-            <div class="date">Posted on: December 10, 2024</div>
-            <div class="review">"I came to Canada in November, and so far, things have been great. I got a factory job, and I’m earning well. The only thing i paid for is the EPC, KES 30,000."</div>
+            <div class="email hidden">Email hidden by user</div>
+            <div class="date"> </div>
+            <div class="review">"I came to Canada in June, and so far, things have been great. I got a factory job, and I’m earning well. The only thing i paid for during the process is my COS, They are 100% legit, Everything happened as i was told initially."</div>
         </div>
     </div>
 
     <div class="testimonial-card">
         <img src="pp10.jpeg" alt="Proof of delivery">
         <div class="text-content">
-            <div class="name">Doreen Achieng Odhiambo</div>
-            <div class="review">"I paid for my EPC and waited. The process was a little longer than expected, but in the end, it worked out. Now I am in Canada, working as a caregiver. The wait was worth it!"</div>
+            <div class="name">Igwe Jacinta Osho</div>
+            <div class="email visible">igwejacintaanulika7@gmail.com</div>
+            <div class="date">From: Nigeria</div>
+            <div class="review">"I paid for my COS and waited. The process was a little longer than expected, but in the end, it worked out. Now I am in Canada, working as a caregiver. The wait was worth it!"</div>
         </div>
     </div>
 
     <div class="testimonial-card">
         <img src="pp26.jpg" alt="Proof of delivery">
         <div class="text-content">
-            <div class="name">Farida Bintu Abubakar</div>
-            <div class="review">"I used to think moving to Canada was only for the rich or highly educated. But here I am! I work as a hotel housekeeper, and I earn more than I did back home as a teacher. This process really works!"</div>
+            <div class="name">Treasure Anucam G.</div>
+            <div class="email visible">treasureanukamglory@gmail.com</div>
+            <div class="date">From: Cameroon</div>
+            <div class="review">"I used to think moving to Canada was only for the rich or highly educated. But here I am! I work as a housekeeper, and I earn more than I did back home as a teacher. This process really works"</div>
         </div>
     </div>
 
@@ -557,6 +620,8 @@ max-width: 90%;
         <img src="pp10.jpeg" alt="Proof of delivery">
         <div class="text-content">
             <div class="name">Chinedu Emeka Okwudili</div>
+            <div class="email visible">emmanuel@gmail.com</div>
+            <div class="date">From: Nigeria</div>
             <div class="review">"I didn’t believe it at first, but after seeing two of my friends succeed, I gave it a shot. The waiting period was nerve-wracking, but when my visa arrived, it was all worth it. I am now working in Canada, saving up for my future."</div>
         </div>
     </div>
@@ -565,6 +630,8 @@ max-width: 90%;
         <img src="pp28.jpg" alt="Proof of delivery">
         <div class="text-content">
             <div class="name">Ntombikayise Lerato Dlamini</div>
+            <div class="email hidden">Email hidden by user</div>
+            <div class="date"> </div>
             <div class="review">"I was skeptical at first, but everything turned out great. I got my work visa in less than three months, and now I work here as a home support worker. I am happy and grateful for this chance."</div>
         </div>
     </div>
@@ -573,15 +640,19 @@ max-width: 90%;
         <img src="pp10.jpeg" alt="Proof of delivery">
         <div class="text-content">
             <div class="name">Emmanuel Kwame Boateng</div>
-            <div class="review">"I applied in June and got my visa in August. I still remember the day I received the email—I was so excited! Now, I work in Ontario now, and my family is proud of me. Thank you for making this possible!"</div>
+            <div class="email hidden">Email hidden by user</div>
+            <div class="date">From: Ghana</div>
+            <div class="review">"I applied in June and got my visa in August. I still remember the day I received the email, I was so excited! Now, I work in Ontario now, and my family is proud of me. Thank you for making this possible TC Canada"</div>
         </div>
     </div>
 
     <div class="testimonial-card">
         <img src="pp10.jpeg" alt="Proof of delivery">
         <div class="text-content">
-            <div class="name">Diana Nyambura Githinji</div>
-            <div class="review">"The application was straightforward, and I got my visa in about two months. I am so glad I took this step!"</div>
+            <div class="name">Favour Efe</div>
+            <div class="email visible">favourefe528@gmail.com</div>
+            <div class="date"> </div>
+            <div class="review">"The application process was straightforward, i signed my job offer letter and sent back, I got my visa in about three months, "</div>
         </div>
     </div>
 
@@ -589,16 +660,18 @@ max-width: 90%;
         <img src="pp7.jpeg" alt="Proof of delivery">
         <div class="text-content">
             <div class="name">MACHOKA & Ray Wanjiru Ochieng</div>
-            <div class="date">From: <b>Kenya</b> </div>
-            <div class="review">"As a Kenyan couple with three kids, getting visa's for everyone felt like a huge financial burden and nearli impossible. We wanted to move but we weren’t sure, then we found this on Tiktok and decided to go in for it. We paid for EPC, i and my wife KES 60,000, the children were covered. We were then sent a couple documents to sign then we were sent dates for Embassy Appointment. Our Visa was approved for the whole family. Thank you TC Canada, i will never be gratefull enough!"</div>
+            <div class="email hidden">Email hidden by user</div>
+            <div class="date">From: Kenya</div>
+            <div class="review">"As a Kenyan couple with three kids, getting visa's for everyone felt like a huge financial burden and nearli impossible. We wanted to move but we weren’t sure, then we found this on Tiktok and decided to go in for it. We paid for COS, i and my wife KES 60,000, the children were covered. We were then sent a couple documents to sign then we were sent dates for Embassy Appointment. Our Visa was approved for the whole family. Thank you TC Canada, i will never be gratefull enough!"</div>
         </div>
     </div>
 
 <div class="testimonial-card">
     <img src="pp10.jpeg" alt="Proof of delivery">
     <div class="text-content">
-        <div class="name">Eric Nwankwo</div>
-        <div class="date">From: <b>Nigeria</b></div>
+        <div class="name">Adeniji Segun David</div>            
+            <div class="email visible">adenijisegundavid@gmail.com</div>
+            <div class="date">From: Nigeria</div>
         <div class="review">"At first, I thought it was too good to be true. I had wasted money before on fake travel agents in Lagos. But after following the steps myself, I saw the process was real. My only regret? Not applying earlier!"</div>
     </div>
 </div>
@@ -607,6 +680,7 @@ max-width: 90%;
     <img src="pp10.jpeg" alt="Proof of delivery">
     <div class="text-content">
         <div class="name">Fatima Said<br></div>
+            <div class="email hidden">Email hidden by user</div>
         <div class="date">From: <b>Kenya</b> </div>
         <div class="review">"I was so afraid of being scammed. My brother laughed at me for even trying. But when I got my visa approval, I showed him my email with a big smile. It’s real, just follow the process!"</div>
     </div>
@@ -616,6 +690,7 @@ max-width: 90%;
     <img src="pp10.jpeg" alt="Proof of delivery">
     <div class="text-content">
         <div class="name">Daniel Mwesigwa</div>
+            <div class="email hidden">Email hidden by user</div>
         <div class="date">From: <b>Uganda</b> </div>
         <div class="review">"The waiting period was the hardest part. I kept doubting myself. But when my passport came back with the visa, I just sat down and stared at it. A dream come true!"</div>
     </div>
@@ -625,6 +700,7 @@ max-width: 90%;
     <img src="pp10.jpeg" alt="Proof of delivery">
     <div class="text-content">
         <div class="name">Linda Nkosi</div>
+            <div class="email hidden">Email hidden by user</div>
         <div class="date">From: <b>South Africa</b></div>
         <div class="review">"I made a mistake on my application and thought everything was ruined. I almost gave up, but I got help correcting it. Lesson learned—double-check everything before submitting!"</div>
     </div>
@@ -634,8 +710,9 @@ max-width: 90%;
     <img src="pp10.jpeg" alt="Proof of delivery">
     <div class="text-content">
         <div class="name">Mohammed Alhassan</div>
+            <div class="email hidden">Email hidden by user</div>
         <div class="date">From: <b>Kenya</b></div>
-        <div class="review">"I was denied a visa before and thought I had no chance. Then i found the video from this company on Tiktok and my life was never thesame. Seeing my Visa approval after i only paid for EPC and nothing else email was the best feeling ever!"</div>
+        <div class="review">"I was denied a visa before and thought I had no chance. Then i found the video from this company on Tiktok and my life was never thesame. Seeing my Visa approval after i only paid for COS and nothing else email was the best feeling ever!"</div>
     </div>
 </div>
 
@@ -643,6 +720,7 @@ max-width: 90%;
     <img src="pp10.jpeg" alt="Proof of delivery">
     <div class="text-content">
         <div class="name">Agnes Mukandori</div>
+            <div class="email hidden">Email hidden by user</div>
         <div class="date">From: <b>Kenya</b></div>
         <div class="review">"I almost missed my chance because I delayed submitting my documents. If you’re reading this—please don’t procrastinate! Start early!"</div>
     </div>
@@ -652,6 +730,7 @@ max-width: 90%;
     <img src="pp10.jpeg" alt="Proof of delivery">
     <div class="text-content">
         <div class="name">Peter Omollo</div>
+            <div class="email hidden">Email hidden by user</div>
         <div class="date">From: <b>Kenya</b> </div>
         <div class="review">"I had no one to guide me, but the instructions were clear. It wasn’t easy, but if you stay focused, you will succeed!"</div>
     </div>
@@ -661,8 +740,9 @@ max-width: 90%;
     <img src="pp10.jpeg" alt="Proof of delivery">
     <div class="text-content">
         <div class="name">David Mbatha</div>
+            <div class="email hidden">Email hidden by user</div>
         <div class="date">From: <b>Tanzania</b> </div>
-        <div class="review">"I paid for my EPC but had to cancel because my father fell sick. I was worried I would lose everything, but I got a refund (minus processing fees). It wasn’t the full amount, but it was fair. I’ll apply again next year!"</div>
+        <div class="review">"I paid for my COS but had to cancel because my father fell sick. I was worried I would lose everything, but I got a refund (minus processing fees). It wasn’t the full amount, but it was fair. I’ll apply again next year!"</div>
     </div>
 </div>
 
@@ -670,8 +750,9 @@ max-width: 90%;
     <img src="pp10.jpeg" alt="Proof of delivery">
     <div class="text-content">
         <div class="name">Chiamaka Eze</div>
+            <div class="email hidden">Email hidden by user</div>
         <div class="date">From: <b>Nigeria</b> </div>
-        <div class="review">"I saved money for two years before applying, here i only spent NGN 350,000 on EPC, no other payment. My patience paid off! To anyone out there do not miss this opportunity!"</div>
+        <div class="review">"I saved money for two years before applying, here i only spent NGN 350,000 on COS, no other payment. My patience paid off! To anyone out there do not miss this opportunity!"</div>
     </div>
 </div>
 
@@ -679,6 +760,8 @@ max-width: 90%;
     <img src="pp10.jpeg" alt="Proof of delivery">
     <div class="text-content">
         <div class="name">Julius Kabwe</div>
+            <div class="email hidden">Email hidden by user</div>
+        <div class="date">From: <b>South Africa</b></div>
         <div class="review">"When I got rejected in my first attempt, I thought my dream was over. But I reviewed my mistakes and tried again. This time, it worked. Never give up!"</div>
     </div>
 </div>
